@@ -6,23 +6,25 @@
 </head>
 <body>
 	<!-- Navbar.ejs -->
-	<% include partials/navbar.ejs %>
+	<% include partials/navbar.ejs %> 
 	
-	<!-- Video Background -->
-	<video autoplay muted loop id="main_video">
-		<source src="/images/wine_pouring.mp4" type="video/mp4">
-	</video>
-
-	<!-- Background Image -->
-	<div class="container-fluid home-video-container">
-		<div class="home-video-text">
-			<h1>A New Type of Spirits Company</h1>
-			<button class="btn btn-lg btn-info">Free Consultation</button>
+	<!-- Video Container -->
+	<header class="v-header video-container">
+		<div class="fullscreen-video-wrap">
+			<!-- Video -->
+			<video autoplay muted>
+				<source src="/images/wine_pouring.mp4" type="video/mp4">
+			</video>
 		</div>
-	</div>
+		<div class="header-overlay"></div>
+		<div class="header-content">
+			<h1>A New Type of Spirits Company</h1>
+			<button class="btn btn-lg btn-info">Get Started</button>
+		</div>
+	</header>
 	
 	<!-- Footer.ejs -->
-    <% include partials/footer.ejs %>
+    <% include partials/footer.ejs %>  
 
 	<!-- Scripts.ejs -->
     <% include partials/scripts.ejs %>
