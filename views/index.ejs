@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<!-- Head.ejs -->
+	<% include partials/head.ejs %>
+</head>
+<body>
+	<!-- Navbar.ejs -->
+	<% include partials/navbar.ejs %>
+	
+	<!-- Video Background -->
+	<video autoplay muted loop id="main_video">
+		<source src="/images/wine_pouring.mp4" type="video/mp4">
+	</video>
+
+	<!-- Background Image -->
+	<div class="container-fluid home-video-container">
+		<div class="home-video-text">
+			<h1>A New Type of Spirits Company</h1>
+			<button class="btn btn-lg btn-info">Free Consultation</button>
+		</div>
+	</div>
+	
+	<!-- Footer.ejs -->
+    <% include partials/footer.ejs %>
+
+	<!-- Scripts.ejs -->
+    <% include partials/scripts.ejs %>
+</body>
+</html>
