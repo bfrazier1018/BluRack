@@ -1,44 +1,54 @@
 <!-- Admin Header -->
-<%- include('./admin_header.ejs') %> 
+<%- include('./admin_header.ejs') %>
 
-<br>
-<div class="container">
+<div class="container-fluid"> <!-- Open Container Fluid  -->
+
+	<!-- Display Messages -->
+		<% if (messages.length > 0 ) { %>
+			<div class="alert alert-success">
+				<%= messages %>
+			</div>
+		<% } %>
+
+	<!-- Page Title -->
+	<h2 class="page-title">Categories</h2>
 	
-	<div class="row">
-		<div class="col-12 col-md-8 offset-md-2">
-			<!-- Display Messages -->
-			<% if (messages.length > 0 ) { %>
-				<div class="alert alert-success">
-					<%= messages %>
-				</div>
-			<% }  %>
-			
-			<h2 class="page-title">Categories</h2>
-			<a href="/admin/categories/add-category" class="btn btn-secondary">New Category</a>
-			<br><br>
-
-			<!-- Display Categories -->
-			<table class="table table-striped align-middle">
-				<thead>
-					<tr>
-						<th>Category</th>
-						<th>Edit</th>
-						<th>Delete</th>
-					</tr>
-				</thead>
-				<tbody>
-					<% categories.forEach(function(category) { %>
-						<tr>
-							<td><%= category.name %></td>
-							<td><a href="/admin/categories/edit-category/<%= category._id %>">Edit</a></td>
-							<td><a class="confirmDeletion" href="/admin/categories/delete-category/<%= category._id %>">Delete</a></td>
-						</tr>
-					<% }); %>
-				</tbody>
-			</table>
-		</div>
+	<!-- Page Links -->
+	<div class="page-links">
+		<a class="btn btn-outline-secondary btn-sm" href="/admin/categories/add-category">Add New</a>
+		<a class="btn btn-outline-secondary btn-sm" href="/admin/categories">All (<%= categories.length %>)</a>
 	</div>
-</div>
+
+	<!-- Categories Table -->
+	<div class="card mb-3">
+		<div class="card-header">
+			<i class="fas fa-folder-open"></i>&nbsp;Categories</div>
+			<div class="card-body">
+				<div class="table-responsive">
+					<table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+						<thead>
+							<tr>
+								<th>Name</th>
+								<th>Edit</th>
+								<th>Delete</th>
+							</tr>
+						</thead>
+						<tbody>
+							<% categories.forEach(function(category) { %>
+								<tr>
+									<td><%= category.name %></td>
+									<td><a href="/admin/categories/edit-category/<%= category._id %>">Edit</a></td>
+									<td><a class="confirmDeletion" href="/admin/categories/delete-category/<%= category._id %>">Delete</a></td>
+								</tr>
+							<% }); %>
+						</tbody>
+					</table>
+				</div>
+			</div>
+		<div class="card-footer small text-muted">There are <%= categories.length%> categories.</div>
+	</div>
+
+</div> <!-- End Container Fluid -->
 
 <!-- Footer & Scripts -->
 <%- include('./admin_footer.ejs') %>	

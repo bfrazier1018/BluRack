@@ -6,6 +6,21 @@ var Category = require('../models/category.js');
 
 // ----------------------- /admin/categories -------------------
 
+// Dashboard **** Change Location *****
+router.get('/dashboard', (req, res) => {
+ 
+   Category.find((err, categories) => {
+        
+        if (err) console.log(err);
+
+        res.render('admin/dashboard', {
+            title: 'All Categories',
+            categories: categories,
+            messages: req.flash('success')
+        });
+    });
+});
+
 // GET -- All Categories
 router.get('/', (req, res) => {
     Category.find((err, categories) => {
@@ -27,7 +42,8 @@ router.get('/add-category', (req, res) => {
 
     res.render('admin/add_category', {
         title: 'Add Category',
-        name: name
+        name: name,
+        messages: []
     });
 });
 
@@ -48,7 +64,8 @@ router.post('/add-category', (req, res) => {
             errors: errors,
             name: name,
             slug: slug,
-            title: 'Add Category'
+            title: 'Add Category',
+            messages: []
         });
 
     } else {
@@ -59,7 +76,8 @@ router.post('/add-category', (req, res) => {
                 req.flash('danger', 'Category Name Exists, Choose Another');
                 res.render('admin/add_category', {
                     name: name,
-                    title: 'Add Category'
+                    title: 'Add Category',
+                    messages: req.flash('danger')
                 });
             } else {
                 var category = new Category({
@@ -78,7 +96,7 @@ router.post('/add-category', (req, res) => {
                         }
                     });
 
-                    req.flash('success', 'Category Added Successfully');
+                    req.flash('success', 'Category Added Successfully!');
                     res.redirect('/admin/categories');
                 });
             }
@@ -96,7 +114,8 @@ router.get('/edit-category/:id', (req, res) => {
         res.render('admin/edit_category', {
             title: 'Edit Category',
             name: category.name, 
-            id: category._id
+            id: category._id,
+            messages: []
         });
     });
 });
@@ -118,17 +137,19 @@ router.post('/edit-category/:id', (req, res) => {
             title: 'Edit Category',
             errors: errors,
             name: name,
-            id: id
+            id: id,
+            messages: []
         }); 
     } else {
         // Check if Name Already Exists
         Category.findOne({ slug: slug, _id:{'$ne':id} }, (err, category) => {
             if (category) {
-                req.flash('danger', 'Name Exists, Choose Another');
+                req.flash('danger', 'Category Name Exists, Choose Another');
                 res.render('admin/edit_category', {
                     title: 'Edit Category',
                     name: name,
-                    id: id
+                    id: id,
+                    messages: req.flash('danger')
                 });
             } else {
                 // Find Category By Id
@@ -149,7 +170,7 @@ router.post('/edit-category/:id', (req, res) => {
                                 req.app.locals.categories = categories;
                             }
                         });
-                        req.flash('success', 'Category Edited Successfully');
+                        req.flash('success', 'Category Updated Successfully!');
                         res.redirect('/admin/categories');
                     });
                 });
@@ -172,7 +193,7 @@ router.get('/delete-category/:id', (req, res) => {
             }
         });
 
-        req.flash('success', 'Category Deleted Successfully');
+        req.flash('success', 'Category Deleted Successfully!');
         res.redirect('/admin/categories');
     });
 });
