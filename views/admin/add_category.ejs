@@ -1,0 +1,44 @@
+<!-- Admin Header -->
+<%- include('./admin_header.ejs') %> 
+
+<br>
+<div class="container">
+	
+	<div class="row">
+
+		<div class="col-12 col-md-8 offset-md-2">
+
+			<!-- Page Title -->
+			<h2 class="page-title">New Category</h2>
+
+			<!-- Display Errors -->
+			<% if (typeof errors !== 'undefined' ) { %>
+				<% errors.forEach(function(error) { %>
+					<div class="alert alert-danger">
+						<%= error.msg %>
+					</div>
+				<%});%>
+			<% } %>
+
+			<!-- Add Category Form -->
+			<form autocomplete="off" action="/admin/categories/add-category" method="post">
+				<!-- Name -->
+				<div class="input-group mb-3">
+  					<div class="input-group-prepend">
+    					<span class="input-group-text"><i class="fa fa-glass"></i></span>
+  					</div>
+  					<input type="text" class="form-control" name="name" value="<%= name %>" placeholder="Name">
+				</div>
+
+				<!-- Submit Button -->
+				<button type="submit" class="btn btn-primary">Submit</button>
+			</form>
+		</div>
+
+	</div>
+
+</div>
+
+<!-- Footer & Scripts -->
+<%- include('./admin_footer.ejs') %>	
+	

@@ -1,0 +1,46 @@
+<!-- Admin Header -->
+<%- include('./admin_header.ejs') %> 
+
+<br>
+<div class="container">
+	
+	<div class="row">
+		<div class="col-12 col-md-8 offset-md-2">
+			<!-- Display Messages -->
+			<% if (messages.length > 0 ) { %>
+				<div class="alert alert-success">
+					<%= messages %>
+				</div>
+			<% }  %>
+			
+			<h2 class="page-title">Categories</h2>
+			<a href="/admin/categories/add-category" class="btn btn-secondary">New Category</a>
+			<br><br>
+
+			<!-- Display Categories -->
+			<table class="table table-striped align-middle">
+				<thead>
+					<tr>
+						<th>Category</th>
+						<th>Edit</th>
+						<th>Delete</th>
+					</tr>
+				</thead>
+				<tbody>
+					<% categories.forEach(function(category) { %>
+						<tr>
+							<td><%= category.name %></td>
+							<td><a href="/admin/categories/edit-category/<%= category._id %>">Edit</a></td>
+							<td><a class="confirmDeletion" href="/admin/categories/delete-category/<%= category._id %>">Delete</a></td>
+						</tr>
+					<% }); %>
+				</tbody>
+			</table>
+		</div>
+	</div>
+</div>
+
+<!-- Footer & Scripts -->
+<%- include('./admin_footer.ejs') %>	
+	
+
