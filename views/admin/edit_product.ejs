@@ -1,0 +1,125 @@
+	<!-- Admin Header -->
+	<%- include('./admin_header.ejs') %>
+
+	<div class="container-fluid"> <!-- Open Container Fluid  -->
+
+		<!-- Display Errors -->
+		<% if (typeof errors !== 'undefined' ) { %>
+			<% errors.forEach(function(error) { %>
+				<div class="alert alert-danger">
+					<%= error.msg %>
+				</div>
+			<%});%>
+		<% } %>
+
+		<!-- Display Messages -->
+		<% if (messages.length > 0 ) { %>
+			<div class="alert alert-danger">
+				<%= messages %>
+			</div>
+		<% } %>
+		
+		<!-- Add Category -->
+		<div class="row input-form-row">
+			<div class="col-12 col-md-5">
+
+				<!-- Page Title -->
+				<h2 class="page-title">Edit Product</h2>
+		
+				<!--  Add Product Form -->
+				<form autocomplete="off" action="/admin/products/edit-product/<%= id %>" method="post" enctype="multipart/form-data">
+					<!-- Name -->
+					<div class="form-group">
+						<input class="form-control" type="text" name="name" value="<%= name %>" placeholder="Name">
+					</div>
+					<!-- Category -->
+					<div class="form-group">
+						<select name="category" class="form-control">
+							<% categories.forEach(function(cat) { %>
+								<option value="<%= cat.slug %>"
+									<% if (cat.slug == category) { %>
+										selected="selected"
+									<% } %>
+									><%= cat.name %>
+								</option>
+							<% }); %>
+						</select>
+					</div>
+					<!-- Price -->
+					<div class="form-group">
+						<input class="form-control" type="text" name="price" value="<%= price %>" placeholder="Price">
+					</div>
+					<!-- Description -->
+					<div class="form-group">
+						<textarea cols="20" rows="5" class="form-control" name="description" placeholder="Description"><%= description %></textarea> 
+					</div>
+					<!-- Image -->
+					<div class="form-group">
+						<input class="form-control" type="file" name="image" id="img">
+						<img src="#" id="imgPreview">
+					</div>
+
+					<!-- Submit Button -->
+					<button type="submit" class="btn btn-primary">Update</button>
+				</form>
+
+				<!-- Gallery Images -->
+				<hr>
+				<h3 class="page-header">Gallery</h3>
+
+				<ul class="gallery">
+					<% galleryImages.forEach(function(image) { %>
+						<% if (image != "thumbs") { %>
+							<li>
+								<img class="productImage" src="/product_images/<%= id %>/gallery/thumbs/<%= image %>" alt="" >&nbsp;
+								<a class="confirmDeletion" href="/admin/products/delete-image/<%= image %>?id=<%= id %>">Delete</a>
+							</li>
+						<% } %>
+					<% }); %>
+				</ul>
+
+				<form class="dropzone" id="dropzoneForm" action="/admin/products/product-gallery/<%= id %>" method="post" enctype="multipart/form-data">
+					<div class="fallback">
+						<input type="file" name="file" multiple >
+						<input type="submit" value="Upload" >
+					</div>
+				</form>
+			</div>
+		</div>
+
+	</div> <!-- End Container Fluid -->
+
+	<!-- Footer & Scripts -->
+	<%- include('./admin_footer.ejs') %>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/dropzone/5.5.1/dropzone.js"></script>
+
+	<script>
+    	<!-- Preview Image -->
+    	function readURL(input) {
+    		if (input.files && input.files[0]) {
+    			var reader = new FileReader();
+	    		reader.onload = function(e) {
+	    			$('#imgPreview').attr('src', e.target.result).width(100).height(100);
+	    		}
+    			reader.readAsDataURL(input.files[0]);
+    		}
+    	}
+    	$('#img').change(function() {
+    		readURL(this);
+    	});
+
+    	// Dropzone 
+    	Dropzone.options.dropzoneForm = {
+    		acceptedFiles: "image/*",
+    		init: function() {
+    			this.on("queuecomplete", function(file) {
+    				setTimeout(function() {
+    					location.reload()
+    				}, 1000);
+    			});
+    		}
+    	}
+    </script>
+
+</body> 
+</html> <!-- End HTML Document

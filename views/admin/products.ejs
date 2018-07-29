@@ -1,4 +1,4 @@
-<!-- Admin Header -->
+	<!-- Admin Header -->
 	<%- include('./admin_header.ejs') %>
 
 	<div class="container-fluid"> <!-- Open Container Fluid  -->
@@ -43,7 +43,7 @@
 												<% if (product.image == "") { %>
 													<img id="productImage" src="/images/noimage.png" alt="">
 												<% } else { %>
-													<img id="productImage" src="/product_images/<%= product.slug %>/<%= product.image %>">
+													<img id="productImage" src="/product_images/<%= product._id %>/<%= product.image %>">
 												<% } %>
 											</td>
 											<td><a href="/admin/products/edit-product/<%= product._id %>"><%= product.name %></a></td>

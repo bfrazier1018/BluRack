@@ -95,6 +95,16 @@ Category.find({}).sort({sorting: 1}).exec(function(err, categories) {
   }
 });
 
+// Products Model
+const Product = require('./models/product');
+Product.find({}).sort({sorting: 1}).exec(function(err, products) {
+  if (err) {
+    console.log(err);
+  } else {
+    app.locals.products = products;
+  }
+});
+
 // Passport Config
 // require('./config/passport')(passport);
 // Passport Middleware

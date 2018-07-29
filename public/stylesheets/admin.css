@@ -358,10 +358,12 @@ body.fixed-nav.sidebar-toggled #content-wrapper {
   margin: 25px 0;
 }
 
+/* For Sortable Tables */
 .sortable {
   cursor: pointer;
 }
 
+/* Center td in Table */
 table.align-middle td {
   vertical-align: middle !important;
 }
@@ -371,10 +373,53 @@ table.align-middle td {
   margin: 20px;
 }
 
-/* Product Image on All Products */
+/* Main Product Image */
 #productImage {
+  width: 80px;
+  height: 80px;
+}
+
+img.pimage {
+  width: 125px;
+}
+
+a.pa {
+  display: inline-block;
+  height: 160px;
+}
+
+.row.products .p {
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+
+img.spi {
+  width: 100%;
+}
+
+ul.gallery li {
+  display: inline-block;
+  margin: 20px;
+  list-style: none;
+}
+
+img.cpi {
   width: 100px;
-  height: 100px;
+}
+
+/* Gallery Images */
+ul.gallery {
+  padding: 0;
+}
+
+ul.gallery li:first-child {
+  margin-left: 0;
+}
+
+ul.gallery li {
+  margin-left: 20px;
+  display: inline-block;
+  list-style: none;
 }
 
 /* -------------------- Footer ----------------- */
