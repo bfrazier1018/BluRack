@@ -6,7 +6,7 @@ const logger = require('morgan');
 const session = require('express-session');
 const validator = require('express-validator');
 const flash = require('connect-flash');
-const fileUpload = require('express-fileUpload');
+const fileUpload = require('express-fileupload');
 const passport = require('passport');
 
 // Database
@@ -25,6 +25,7 @@ db.once('open', () => {
 const pagesRouter = require('./routes/pages');
 const usersRouter = require('./routes/users');
 const adminCategoriesRouter = require('./routes/admin_categories');
+const adminProductsRouter = require('./routes/admin_products');
 
 const app = express();
 
@@ -85,14 +86,14 @@ app.use(express.static(path.join(__dirname, 'public')));
 // });
 
 // Category Model
-// const Category = require('./models/category');
-// Category.find( (err, categories) => {
-//   if (err) {
-//     console.log(err);
-//   } else {
-//     app.locals.categories = categories;
-//   }
-// });
+const Category = require('./models/category');
+Category.find({}).sort({sorting: 1}).exec(function(err, categories) {
+  if (err) {
+    console.log(err);
+  } else {
+    app.locals.categories = categories;
+  }
+});
 
 // Passport Config
 // require('./config/passport')(passport);
@@ -110,6 +111,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 // Use Routes
 app.use('/users', usersRouter);
 app.use('/admin/categories', adminCategoriesRouter);
+app.use('/admin/products', adminProductsRouter);
 app.use('/', pagesRouter);
 
 // catch 404 and forward to error handler

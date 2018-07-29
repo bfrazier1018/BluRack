@@ -1,49 +1,51 @@
-<!-- Admin Header -->
-<%- include('./admin_header.ejs') %>
+	<!-- Admin Header -->
+	<%- include('./admin_header.ejs') %>
 
-<div class="container-fluid"> <!-- Open Container Fluid  -->
+	<div class="container-fluid"> <!-- Open Container Fluid  -->
 
-	<!-- Display Errors -->
-	<% if (typeof errors !== 'undefined' ) { %>
-		<% errors.forEach(function(error) { %>
-			<div class="alert alert-danger">
-				<%= error.msg %>
-			</div>
-		<%});%>
-	<% } %>
-
-	<!-- Display Messages -->
-	<% if (messages.length > 0 ) { %>
-		<div class="alert alert-danger">
-			<%= messages %>
-		</div>
-	<% } %>
-	
-	<!-- Add Category -->
-	<div class="row input-form-row">
-		<div class="col-12 col-md-4">
-
-			<!-- Page Title -->
-			<h2 class="page-title">Add New Category</h2>
-	
-			<!--  Form -->
-			<form autocomplete="off" action="/admin/categories/add-category" method="post">
-				<!-- Name -->
-				<div class="input-group mb-3">
-					<div class="input-group-prepend">
-						<span class="input-group-text"><i class="fas fa-folder-open"></i></span>
-					</div>
-					<input type="text" class="form-control" name="name" value="<%= name %>" placeholder="Name (Required)">
+		<!-- Display Errors -->
+		<% if (typeof errors !== 'undefined' ) { %>
+			<% errors.forEach(function(error) { %>
+				<div class="alert alert-danger">
+					<%= error.msg %>
 				</div>
+			<%});%>
+		<% } %>
 
-				<!-- Submit Button -->
-				<button type="submit" class="btn btn-primary">Add Category</button>
-			</form>
+		<!-- Display Messages -->
+		<% if (messages.length > 0 ) { %>
+			<div class="alert alert-danger">
+				<%= messages %>
+			</div>
+		<% } %>
+		
+		<!-- Add Category -->
+		<div class="row input-form-row">
+			<div class="col-12 col-md-4">
+
+				<!-- Page Title -->
+				<h2 class="page-title">Add New Category</h2>
+		
+				<!--  Form -->
+				<form autocomplete="off" action="/admin/categories/add-category" method="post">
+					<!-- Name -->
+					<div class="input-group mb-3">
+						<div class="input-group-prepend">
+							<span class="input-group-text"><i class="fas fa-folder-open"></i></span>
+						</div>
+						<input type="text" class="form-control" name="name" value="<%= name %>" placeholder="Name (Required)">
+					</div>
+
+					<!-- Submit Button -->
+					<button type="submit" class="btn btn-primary">Add Category</button>
+				</form>
+			</div>
 		</div>
-	</div>
 
-</div> <!-- End Container Fluid -->
+	</div> <!-- End Container Fluid -->
 
-<!-- Footer & Scripts -->
-<%- include('./admin_footer.ejs') %>	
-	
+	<!-- Footer & Scripts -->
+	<%- include('./admin_footer.ejs') %>	
+
+</body> 
+</html> <!-- End HTML Document -->

@@ -9,11 +9,18 @@ var Category = require('../models/category.js');
 // Dashboard **** Change Location *****
 router.get('/dashboard', (req, res) => {
  
-   Category.find((err, categories) => {
-        
+    res.render('dashboard', {
+        title: "Dashboard"
+    });
+});
+
+// GET -- All Categories
+router.get('/', (req, res) => {
+    
+    Category.find({}).sort({sorting: 1}).exec((err, categories) => {
         if (err) console.log(err);
 
-        res.render('admin/dashboard', {
+        res.render('admin/categories', {
             title: 'All Categories',
             categories: categories,
             messages: req.flash('success')
@@ -21,16 +28,42 @@ router.get('/dashboard', (req, res) => {
     });
 });
 
-// GET -- All Categories
-router.get('/', (req, res) => {
-    Category.find((err, categories) => {
-        
-        if (err) console.log(err);
+// Sort Categories Function
+function sortCategories(ids, callback) {
 
-        res.render('admin/categories', {
-            title: 'All Categories',
-            categories: categories,
-            messages: req.flash('success')
+    var count = 0;
+
+    for (let i = 0; i < ids.length; i++) {
+        var id = ids[i];
+        count++;
+
+        (function(count) {
+            Category.findById(id, (err, category) => {
+                category.sorting = count;
+                category.save((err) => {
+                    if (err) console.log(err);
+                    count++;
+                    if (count >= ids.length) {
+                        callback();
+                    }
+                });
+            });
+        })(count);
+    }
+};
+
+// POST -- Reorder Categories
+router.post('/reorder-categories', (req, res) => {
+
+    var ids = req.body['id[]'];
+
+    sortCategories(ids, () => {
+        Category.find({}).sort({sorting: 1}).exec(function(err, categories) {
+            if (err) {
+                console.log(err);
+            } else {
+                req.app.locals.categories = categories;
+            }
         });
     });
 });
@@ -82,13 +115,14 @@ router.post('/add-category', (req, res) => {
             } else {
                 var category = new Category({
                     name: name,
-                    slug: slug
-                    });
+                    slug: slug,
+                    sorting: 100
+                });
                 // Save Category
                 category.save(function(err) {
                     if (err) console.log(err);
 
-                    Category.find( (err, categories) => {
+                    Category.find({}).sort({sorting: 1}).exec((err, categories) => {
                         if (err) {
                             console.log(err);
                         } else {
@@ -163,7 +197,7 @@ router.post('/edit-category/:id', (req, res) => {
                     category.save(function(err) {
                         if (err) console.log(err);
 
-                        Category.find( (err, categories) => {
+                        Category.find({}).sort({sorting: 1}).exec((err, categories) => {
                             if (err) {
                                 console.log(err);
                             } else {
@@ -185,9 +219,9 @@ router.get('/delete-category/:id', (req, res) => {
     Category.findByIdAndRemove(req.params.id, (err) => {
         if (err) return console.log(err);
 
-        Category.find( (err, categories) => {
+        Category.find({}).sort({sorting: 1}).exec((err, categories) => {
             if (err) {
-            console.log(err);
+                console.log(err);
             } else {
                 req.app.locals.categories = categories;
             }

@@ -9,6 +9,9 @@ const CategorySchema = mongoose.Schema({
 	}, 
 	slug: {
 		type: String
+	},
+	sorting: {
+		type: Number
 	}
 	
 });
