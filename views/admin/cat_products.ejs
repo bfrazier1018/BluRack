@@ -1,0 +1,67 @@
+<!-- Admin Header -->
+	<%- include('./admin_header.ejs') %>
+
+	<div class="container-fluid"> <!-- Open Container Fluid  -->
+
+		<!-- Page Title -->
+		<h2 class="page-title">Products</h2>
+		
+		<!-- Page Links -->
+		<div class="page-links">
+			<a class="btn btn-outline-primary btn-sm" href="/admin/products/add-product">Add New</a>
+			<a class="btn btn-outline-secondary btn-sm" href="/admin/products">All (<%= allProducts.length %>)</a>
+			<% categories.forEach(function(cat) { %>
+				<a class="btn btn-outline-secondary btn-sm" href="/admin/products/<%= cat.slug %>"><%= cat.name %></a>
+			<% }); %>
+		</div>
+
+		<!-- Categories Table -->
+		<div class="card mb-3">
+			<div class="card-header">
+				<i class="fas fa-glass-martini"></i>&nbsp;Products</div>
+				<div class="card-body">
+					<div class="table-responsive">
+						<% if (products.length > 0) { %>
+							<table class="table table-bordered align-middle" id="dataTable" width="100%" cellspacing="0">
+								<thead>
+									<tr>
+										<th>Image</th>
+										<th>Name</th>
+										<th>Price</th>
+										<th>Category</th>
+										<th>Delete</th>
+									</tr>
+								</thead>
+								<tbody>
+									<% products.forEach(function(product) { %>
+										<tr id="id_<%= product.id %>" class="<%= product.slug %>">
+											<td>
+												<% if (product.image == "") { %>
+													<img id="productImage" src="/images/noimage.png" alt="">
+												<% } else { %>
+													<img id="productImage" src="/product_images/<%= product._id %>/<%= product.image %>">
+												<% } %>
+											</td>
+											<td><a href="/admin/products/edit-product/<%= product._id %>"><%= product.name %></a></td>
+											<td>$<%= parseFloat(product.price).toFixed(2) %></td>
+											<td><%= product.category %></td>
+											<td><a class="confirmDeletion" href="/admin/products/delete-product/<%= product._id %>">Delete</a></td>
+										</tr>
+									<% }); %>
+								</tbody>
+							</table>
+						<% } else { %>
+							<h3 class="text-center">There are no Products</h3>
+						<% } %>
+					</div>
+				</div>
+			<div class="card-footer small text-muted">There are <%= products.length%> products.</div>
+		</div>
+
+	</div> <!-- End Container Fluid -->
+
+	<!-- Footer & Scripts -->
+	<%- include('./admin_footer.ejs') %>
+
+</body> 
+</html> <!-- End HTML Document -->

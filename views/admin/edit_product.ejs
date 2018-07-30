@@ -29,6 +29,7 @@
 				<!--  Add Product Form -->
 				<form autocomplete="off" action="/admin/products/edit-product/<%= id %>" method="post" enctype="multipart/form-data">
 					<!-- Name -->
+					<label for="">Name</label>
 					<div class="form-group">
 						<input class="form-control" type="text" name="name" value="<%= name %>" placeholder="Name">
 					</div>
@@ -55,10 +56,21 @@
 					</div>
 					<!-- Image -->
 					<div class="form-group">
+						<h4><i class="far fa-image"></i>&nbsp;Current Image</h4>
+						<p>
+							<% if (image == '') { %>
+								<img id="productImage" src="/images/noimage.png" alt="">
+							<% } else { %>
+								<img id="productImage" src="/product_images/<%= id %>/<%= image %>" alt="">
+							<% } %>
+						</p>
+						<p><%= image %></p>
+					</div>
+					<div class="form-group">
 						<input class="form-control" type="file" name="image" id="img">
 						<img src="#" id="imgPreview">
 					</div>
-
+					<input type="hidden" name="pimage" value="<%= image %>">
 					<!-- Submit Button -->
 					<button type="submit" class="btn btn-primary">Update</button>
 				</form>

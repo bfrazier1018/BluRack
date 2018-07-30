@@ -1,31 +1,144 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<!-- Head.ejs -->
+	<!-- Head -->
 	<% include partials/head.ejs %>
 </head>
 <body>
-	<!-- Navbar.ejs -->
+	<!-- Navbar -->
 	<% include partials/navbar.ejs %> 
+	
+	<!-- Background Image Overlay -->
+    <header class="masthead">
+      <div class="container">
+        <div class="intro-text">
+          <!-- <div class="intro-lead-in">Welcome To Our Studio!</div> -->
+          <div class="intro-heading text-uppercase">A New Type of Spirits Company</div>
+          <a class="btn btn-primary btn-xl text-uppercase js-scroll-trigger" href="#options">Get Started</a>
+        </div>
+      </div>
+    </header>
 
-	<!-- Video Background -->
-	<header class="v-header video-container">
-		<div class="fullscreen-video-wrap">
-			<video autoplay muted>
-				<source src="/images/wine_pouring.mp4" type="video/mp4">
-			</video>
+	<!-- Options to Grow Your Brand -->
+	<section class="bg-light" id="options">
+		<div class="container">
+			<!-- Header -->
+			<div class="row">
+				<div class="col-12 text-center">
+					<h2 class="options-heading text-uppercase">Options to Grow your Brand</h2>
+				</div>
+			</div>
+			<div class="row text-center">
+				<!-- Distribution -->
+				<div class="co-12 col-md-4 options-div">
+					<span class="fa-stack fa-4x">
+						<i class="fa fa-circle fa-stack-2x text-primary"></i>
+						<i class="fas fa-cocktail fa-stack-1x fa-inverse"></i>
+					</span>
+					<h4 class="service-heading">Distribution</h4>
+					<p class="text-light">Our affordable self distribution model handles logistics so you can focus on your business.</p>
+					<a class="btn btn-primary" href="/services">View Details</a>
+				</div>
+				<!-- Sales Programs -->
+				<div class="co-12 col-md-4 options-div">
+					<span class="fa-stack fa-4x">
+						<i class="fa fa-circle fa-stack-2x text-primary"></i>
+						<i class="fas fa-chart-line fa-stack-1x fa-inverse"></i>
+					</span>
+					<h4 class="service-heading">Sales Programs</h4>
+					<p class="text-light">Utilize our existing customer base and relationships to get your brand into top accounts.</p>
+					<a class="btn btn-primary" href="/services">View Details</a>
+				</div>
+				<!-- Online Platform -->
+				<div class="col-12 col-md-4 options-div">
+					<span class="fa-stack fa-4x">
+						<i class="fa fa-circle fa-stack-2x text-primary"></i>
+						<i class="fas fa-desktop fa-stack-1x fa-inverse"></i>
+					</span>
+					<h4 class="service-heading">Online Platform</h4>
+					<p class="text-light">Custom landing page for online ordering and delivery of your product.</p>
+					<a class="btn btn-primary" href="/services">View Details</a>
+				</div>
+			</div>
 		</div>
-		<div class="header-overlay"></div>
-		<div class="header-content">
-			<h1 id="changeItNow">A New Type of Spirits Company</h1>
-			<button class="btn btn-lg btn-info">Get Started</button>
-		</div>
-	</header>
+	</section> <!-- End Options Section -->
+	
+	<!-- Giving Back Section-->
+	<section id="givingBack" class="giving-back-section">
+		<div class="container">
+			<!-- Header -->
+			<div class="row">
+				<div class="col-lg-12 text-center">
+					<h2 class="section-heading text-uppercase">Giving Back</h2>
+					<h3 class="section-subheading text-muted">We believe strong companies build strong communites. At BluRack, we are dedicated to causes near and
+						dear to our hearts and the communities we live in. 
+					</h3>
+				</div>
+			</div>
 
-	<!-- Footer.ejs -->
+			<!-- Featured Project Row -->
+			<div class="row align-items-center no-gutters mb-4 mb-lg-5">
+				<div class="col-xl-8 col-lg-7">
+					<img class="img-fluid mb-3 mb-lg-0" src="/images/donation.jpg" alt="">
+				</div>
+				<div class="col-xl-4 col-lg-5">
+					<div class="featured-text text-center text-lg-left">
+						<h4>Donation</h4>
+						<p class="text-dark-50 mb-0">BluRack donates 10% of ALL profits to extraordinary causes</p>
+					</div>
+				</div>
+			</div>
+
+			<!-- Project One Row -->
+			<div class="row justify-content-center no-gutters mb-5 mb-lg-0">
+				<div class="col-lg-6">
+					<img class="img-fluid" src="/images/animals.jpg" alt="">
+				</div>
+				<div class="col-lg-6">
+					<div class="bg-light text-center h-100 project">
+						<div class="d-flex h-100">
+							<div class="giving-back-text w-100 my-auto text-center text-lg-left">
+								<h4 class="text-dark">Animals</h4>
+								<p class="mb-0 text-primary-50">We give to organizations that protect the animals and habitats that we love.</p>
+								<br>
+								<p>1 - Wildlife Conservation Organizations</p>
+								<p>2 - Local Zoos and Aquariums</p>
+								<p>3 - Pet and Animal Welfare Organizations</p>
+								<hr class="d-none d-lg-block mb-0 ml-0">
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<!-- Project Two Row -->
+			<div class="row justify-content-center no-gutters">
+				<div class="col-lg-6">
+					<img class="img-fluid" src="/images/health.jpg" alt="">
+				</div>
+				<div class="col-lg-6 order-lg-first">
+					<div class="bg-light text-center h-100 project">
+						<div class="d-flex h-100">
+							<div class="giving-back-text w-100 my-auto text-center text-lg-right">
+								<h4 class="text-dark">Health</h4>
+								<p class="mb-0 text-primary-50">We are also passionate about human health services and aim to provide help for the sick and disabled.</p>
+								<br>
+								<p>1 - Disease and Disorder Charities</p>
+								<p>2 - Medical Services and Treatment Organizations</p>
+								<p>3 - Medical research Charities</p>
+								<hr class="d-none d-lg-block mb-0 mr-0">
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section> <!-- End Giving Back Section -->
+
+	<!-- Footer -->
     <% include partials/footer.ejs %>    
 
-	<!-- Scripts.ejs -->
+	<!-- Scripts -->
     <% include partials/scripts.ejs %>
 </body>
 </html>

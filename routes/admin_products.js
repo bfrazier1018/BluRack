@@ -19,14 +19,17 @@ router.get('/', (req, res) => {
         count = c;
     });
 
-    Product.find({}).sort({sorting: 1}).exec((err, products) => {
-        if (err) console.log(err);
+    Category.find((err, categories) => {
+        Product.find({}).sort({sorting: 1}).exec((err, products) => {
+            if (err) console.log(err);
 
-        res.render('admin/products', {
-            title: 'All Products',
-            products: products,
-            count: count,
-            messages: req.flash('success')
+            res.render('admin/products', {
+                title: 'All Products',
+                categories: categories,
+                products: products,
+                count: count,
+                messages: req.flash('success')
+            });
         });
     });
 });
@@ -181,7 +184,7 @@ router.post('/add-product', (req, res) => {
 
                     console.log('-------- Image File:' + imageFile);
 
-                    if (imageFile !== "") {
+                    if (imageFile != "") {
                         var productImage = req.files.image;
                         var path = 'public/product_images/' + product._id + '/' + imageFile; 
 
@@ -319,6 +322,27 @@ router.post('/edit-product/:id', (req, res) => {
             }
         });
     }
+});
+
+// GET -- Products by Category
+router.get('/:category', (req, res) => {
+
+    var categorySlug = req.params.category;
+
+    Category.findOne({slug: categorySlug}, (err, category) => {
+        if (err) console.log(err);
+        Product.find((err, allProducts) => {
+            Product.find({category: categorySlug}, (err, products) => {
+                if (err) console.log(err);
+
+                res.render('admin/cat_products', {
+                    title: category.title,
+                    products: products,
+                    allProducts: allProducts
+                });
+            });
+        });
+    });
 });
 
 // POST -- Product Gallery
