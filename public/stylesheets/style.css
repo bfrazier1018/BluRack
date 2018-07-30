@@ -138,7 +138,7 @@ h6 {
 
 /* ---------------------- Section ----------------------- */
 section {
-    padding: 100px 0;
+    padding: 90px 0;
 }
 
 section h2.section-heading {
@@ -165,7 +165,7 @@ section h3.section-subheading {
 
 @media (min-width: 768px) {
     section {
-    padding: 150px 0;
+    padding: 110px 0;
   }
 }
 
@@ -263,6 +263,11 @@ section .options-div {
 .giving-back-section .giving-back-text {
     padding: 3rem;
     font-size: 100%;
+    color: #f8f9fa;
+}
+
+.giving-back-section .giving-back-div {
+    background-color: #212529;
 }
 
 @media (min-width: 992px) {
