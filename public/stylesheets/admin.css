@@ -84,6 +84,7 @@ body.fixed-nav.sidebar-toggled #content-wrapper {
   z-index: 1;
 }
 
+/* ------------------------------ Top Navbar ---------------------- */
 .navbar-nav .nav-item.active .nav-link {
   color: #fff;
 }
@@ -129,6 +130,7 @@ body.fixed-nav.sidebar-toggled #content-wrapper {
   }
 }
 
+/* -------------------------- Side Navbar --------------------- */
 .sidebar {
   width: 90px !important;
   background-color: #212529;
@@ -376,7 +378,7 @@ table.align-middle td {
 /* Main Product Image */
 #productImage {
   width: 60px;
-  height: 60px;
+  height: 100px;
 }
 
 img.pimage {

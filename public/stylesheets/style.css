@@ -61,7 +61,7 @@ h6 {
 /* -------------------------- Navbar -------------------------- */
 /* Mobile Version */
 #mainNav {
-    background-color: #212529;
+    background-color: transparent;
 }
 
 /* Main Links */
@@ -279,6 +279,105 @@ section .options-div {
         border-width: .25rem;
         width: 30%;
     }
+}
+
+/* ------------------------ Contact Page --------------------------------- */
+section#contact {
+    background-color: #212529;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+/* Mobile View */
+section#contact .section-heading {
+    margin-top: 75px;
+    color: #fff;
+    font-style: italic;
+}
+
+/* Book Meeting Button Div */
+#bookMeeting {
+    display: flex;
+    align-items: center;
+    justify-content: center; 
+    margin-top: 10px;
+    margin-bottom: 20px;
+}
+
+section#contact .form-group {
+    margin-bottom: 25px;
+}
+
+section#contact .form-group input, section#contact .form-group textarea {
+    padding: 20px;
+}
+
+section#contact .form-group input.form-control {
+    height: auto;
+}
+
+section#contact .form-group textarea.form-control {
+    height: 248px;
+}
+
+section#contact .form-control:focus {
+    border-color: #fed136;
+    box-shadow: none;
+}
+
+section#contact ::-webkit-input-placeholder {
+    font-weight: 700;
+    color: #ced4da;
+    font-family: 'Montserrat', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+}
+
+section#contact :-moz-placeholder {
+    font-weight: 700;
+    color: #ced4da;
+    /* Firefox 18- */
+    font-family: 'Montserrat', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+}
+
+section#contact ::-moz-placeholder {
+    font-weight: 700;
+    color: #ced4da;
+    /* Firefox 19+ */
+    font-family: 'Montserrat', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+}
+
+section#contact :-ms-input-placeholder {
+    font-weight: 700;
+    color: #ced4da;
+    font-family: 'Montserrat', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+}
+
+/* Large Screens */
+@media (min-width: 992px) {
+    section#contact .section-heading {
+        margin-top: 100px;
+        margin-bottom: 45px;
+        color: #fff;
+        font-style: italic;
+    }
+
+    #bookMeeting {
+        margin: 0;
+    }
+}
+
+/* Google Map */
+.map {
+    height: 30rem;
+}
+
+@media (max-width: 992px) {
+    .map {
+        height: 75%;
+    }
+}
+
+.map iframe {
+    pointer-events: none;
 }
 
 /* ------------------------ Footer --------------------------------- */

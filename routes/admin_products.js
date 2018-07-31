@@ -19,7 +19,7 @@ router.get('/', (req, res) => {
         count = c;
     });
 
-    Category.find((err, categories) => {
+    Category.find({}).sort({sorting: 1}).exec((err, categories) => {
         Product.find({}).sort({sorting: 1}).exec((err, products) => {
             if (err) console.log(err);
 
@@ -127,7 +127,7 @@ router.post('/add-product', (req, res) => {
 
     if (errors) {
         console.log(errors);
-        Category.find( (err, categories) => {
+        Category.find((err, categories) => {
             res.render('admin/add_product', {
                 errors: errors,
                 title: 'Add Product',
