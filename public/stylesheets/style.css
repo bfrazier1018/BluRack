@@ -16,8 +16,14 @@ a:hover {
   color: #fff;
 }
 
-.text-primary {
+/* Main Blue Color */
+.text-blue {
   color: #00b7ff !important;
+}
+
+/* Main Dark Color */
+.text-custom-dark {
+    color: #212529 !important;
 }
 
 h1,
@@ -56,6 +62,11 @@ h6 {
 .btn-primary:active, .btn-primary:focus {
     border: none;
     box-shadow: 0 0 0 0.2rem rgba(255, 255, 255, 0.5) !important;
+}
+
+/* Book Meeting Button Row */
+.book-meeting-row {
+    margin-top: 35px;
 }
 
 /* -------------------------- Navbar -------------------------- */
@@ -228,7 +239,7 @@ header.masthead .intro-text .intro-heading {
     }
 }
 
-/* Options Section */
+/* --- Options Section --- */
 section h2.options-heading {
     font-size: 35px;
     margin-top: 0;
@@ -239,12 +250,66 @@ section h2.options-heading {
 }
 
 section .options-div {
-    border: 10px solid #fff;
+    border: 9px solid #f8f9fa;
     padding: 55px 0 65px 0;
     background-color: #212529;
 }
+/* Modal */
+.modal-backdrop {
+    background: #212529;
+    opacity: 0.97 !important;
+}
 
-/* Giving Back Section */
+.modal-body {
+    margin-top: 0;
+    background: #00b7ff;
+    /* fallback for old browsers */
+    background: -webkit-linear-gradient(to right, #00b7ff, #65C7F7, #9CECFB);
+    /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(to right, #00b7ff, #65C7F7, #9CECFB);
+    /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+}
+
+.modal .card {
+    border: none;
+    border-radius: 1rem;
+    transition: all 0.2s;
+    box-shadow: 0 0.5rem 1rem 0 rgba(0, 0, 0, 0.1);
+}
+
+.modal-body hr {
+    margin: 1.5rem 0;
+    color: #00b7ff;
+}
+
+
+.modal .card-title {
+    margin: 0.5rem 0;
+    font-size: 0.9rem;
+    letter-spacing: .1rem;
+    font-weight: bold;
+}
+
+.modal .card-price {
+    font-size: 2rem;
+    margin: 0;
+}
+
+.modal .card-price .period {
+    font-size: 0.8rem;
+}
+
+.modal ul li {
+    margin-bottom: 1rem;
+}
+
+@media (min-width: 992px) {
+    .card-col {
+        margin-bottom: 12px;
+    }
+}
+
+/* --- Giving Back Section -- */
 .giving-back-section {
     padding: 10rem 0;
 }
@@ -284,6 +349,7 @@ section .options-div {
 /* ------------------------ Contact Page --------------------------------- */
 section#contact {
     background-color: #212529;
+    background-image: url('/images/map.png');
     background-repeat: no-repeat;
     background-position: center;
 }

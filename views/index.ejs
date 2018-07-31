@@ -7,13 +7,13 @@
         <div class="intro-text">
           <!-- <div class="intro-lead-in">Welcome To Our Studio!</div> -->
           <div class="intro-heading text-uppercase">A New Type of Spirits Company</div>
-          <a class="btn btn-primary btn-xl text-uppercase js-scroll-trigger" href="#options">Get Started</a>
+          <a class="btn btn-primary btn-xl text-uppercase js-scroll-trigger" href="/#services">Get Started</a>
         </div>
       </div>
     </header>
 
 	<!-- Options to Grow Your Brand -->
-	<section class="bg-light" id="options">
+	<section class="bg-light" id="services">
 		<div class="container">
 			<!-- Header -->
 			<div class="row">
@@ -25,39 +25,218 @@
 				<!-- Distribution -->
 				<div class="co-12 col-md-4 options-div">
 					<span class="fa-stack fa-4x">
-						<i class="fa fa-circle fa-stack-2x text-primary"></i>
-						<i class="fas fa-cocktail fa-stack-1x fa-inverse"></i>
+						<i class="fa fa-circle fa-stack-2x text-blue"></i>
+						<i class="fas fa-cocktail fa-stack-1x fa-inverse text-light"></i>
 					</span>
 					<h4 class="service-heading">Distribution</h4>
 					<p class="text-light">Our affordable self distribution model handles logistics so you can focus on your business.</p>
-					<a class="btn btn-primary" href="/services">View Details</a>
+					<!-- Modal -->
+					<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#distributionModal">View Details</button>
 				</div>
 				<!-- Sales Programs -->
 				<div class="co-12 col-md-4 options-div">
 					<span class="fa-stack fa-4x">
-						<i class="fa fa-circle fa-stack-2x text-primary"></i>
-						<i class="fas fa-chart-line fa-stack-1x fa-inverse"></i>
+						<i class="fa fa-circle fa-stack-2x text-blue"></i>
+						<i class="fas fa-chart-line fa-stack-1x fa-inverse text-light"></i>
 					</span>
 					<h4 class="service-heading">Sales Programs</h4>
 					<p class="text-light">Utilize our existing customer base and relationships to get your brand into top accounts.</p>
-					<a class="btn btn-primary" href="/services">View Details</a>
+					<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#salesModal">View Details</button>
 				</div>
 				<!-- Online Platform -->
 				<div class="col-12 col-md-4 options-div">
 					<span class="fa-stack fa-4x">
-						<i class="fa fa-circle fa-stack-2x text-primary"></i>
-						<i class="fas fa-desktop fa-stack-1x fa-inverse"></i>
+						<i class="fa fa-circle fa-stack-2x text-blue"></i>
+						<i class="fas fa-desktop fa-stack-1x fa-inverse text-light"></i>
 					</span>
-					<h4 class="service-heading">Online Platform</h4>
+					<h4 class="service-heading text-white">Online Platform</h4>
 					<p class="text-light">Custom landing page for online ordering and delivery of your product.</p>
-					<a class="btn btn-primary" href="/services">View Details</a>
+					<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#onlinePlatformModal">View Details</button>
 				</div>
+			</div>
+			<div class="row book-meeting-row text-center">
+				<div class="col-12">
+					<a class="btn btn-primary btn-xl" href="#">Book a Meeting</a>
 			</div>
 		</div>
 	</section> <!-- End Options Section -->
+
+	<!-- Distribution Modal -->
+	<div class="modal fade" id="distributionModal" tabindex="-1" role="dialog" aria-labelledby="distributionModal" aria-hidden="true">
+		<div class="modal-dialog modal-dialog-centered modal-lg" role="document">
+			<div class="modal-content">
+				<div class="modal-header text-center">
+					<h3 class="modal-title w-100 text-custom-dark" id="distributionModal">Self Distribution</h3>
+					<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+						<span aria-hidden="true">&times;</span>
+					</button>
+				</div>
+				<div class="modal-body">
+					<div class="container">
+						<div class="row">
+							<!-- Distribution -->
+							<div class="col-12 col-lg-6 card-col">
+								<div class="card mb-5 mb-lg-0">
+									<div class="card-body">
+										<h4 class="card-title text-muted text-uppercase text-center">Storage &amp; Clearing</h4>
+										<h6 class="card-price text-center">$250<span class="period"> /mo min</span></h6>
+										<hr>
+										<ul class="fa-ul">
+											<li><span class="fa-li"><i class="fas fa-check"></i></span>Month Storage $125/mo per pallet</li>
+											<li><span class="fa-li"><i class="fas fa-check"></i></span>Clearing $6 per cas plus applicable taxes</li>
+											<li><span class="fa-li"><i class="fas fa-check"></i></span>Climate Controlled Storage $25/mo</li>
+											<li><span class="fa-li"><i class="fas fa-check"></i></span>1 Time Setup Fee $500</li>
+										</ul>
+									</div>
+								</div>
+							</div>
+							<div class="col-12 col-lg-6 card-col">
+								<div class="card mb-5 mb-lg-0">
+									<div class="card-body">
+										<h4 class="card-title text-muted text-uppercase text-center">Delivery</h4>
+										<h6 class="card-price text-center">$250<span class="period"> /mo min</span></h6>
+										<hr>
+										<ul class="fa-ul">
+											<li><span class="fa-li"><i class="fas fa-check"></i></span>24/7 Tri County Delivery</li>
+											<li><span class="fa-li"><i class="fas fa-check"></i></span>Palm Beach - Dade - Broward</li>
+										</ul>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div> 
+				</div>
+			</div>
+		</div>
+	</div> <!-- End Distribution Modal -->
+
+	<!-- Sales Program Modal -->
+	<div class="modal fade" id="salesModal" tabindex="-1" role="dialog" aria-labelledby="salesModal" aria-hidden="true">
+		<div class="modal-dialog modal-dialog-centered modal-lg" role="document">
+			<div class="modal-content">
+				<div class="modal-header text-center">
+					<h3 class="modal-title w-100 text-custom-dark" id="salesModal">Sales Programs</h3>
+					<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+						<span aria-hidden="true">&times;</span>
+					</button>
+				</div>
+				<div class="modal-body">
+					<div class="container">
+						<div class="row">
+							<!-- Product Pitch -->
+							<div class="col-12 col-lg-6 card-col">
+								<div class="card mb-5 mb-lg-0">
+									<div class="card-body">
+										<h4 class="card-title text-muted text-uppercase text-center">Product Pitch Program</h4>
+										<h6 class="card-price text-center">$1,000<span class="period"> /mo</span></h6>
+										<hr>
+										<ul class="fa-ul">
+											<li><span class="fa-li"><i class="fas fa-check"></i></span>3 Month Program</li>
+											<li><span class="fa-li"><i class="fas fa-check"></i></span>Present product to our existing customer base in
+												Broward &amp; Dade counties
+											</li>
+											<li><span class="fa-li"><i class="fas fa-check"></i></span>Discuss on/off premise programming</li>
+											<li><span class="fa-li"><i class="fas fa-check"></i></span>Secure order if buyer is interested</li>
+										</ul>
+									</div>
+								</div>
+							</div>
+							<!-- Brand Ambassador -->
+							<div class="col-12 col-lg-6 card-col">
+								<div class="card mb-5 mb-lg-0">
+									<div class="card-body">
+										<h4 class="card-title text-muted text-uppercase text-center">Brand Ambassador Program</h4>
+										<h6 class="card-price text-center">$1,500<span class="period"> /mo</span></h6>
+										<hr>
+										<ul class="fa-ul">
+											<li><span class="fa-li"><i class="fas fa-check"></i></span>3 Month Program</li>
+											<li><span class="fa-li"><i class="fas fa-check"></i></span>1 on 1 Training with our Sales Trainer</li>
+											<li><span class="fa-li"><i class="fas fa-check"></i></span>Help Vetting Candidates</li>
+											<li><span class="fa-li"><i class="fas fa-check"></i></span>Liquor Industry Specific Knowledge</li>
+											<li><span class="fa-li"><i class="fas fa-check"></i></span>1 Time Setup Fee - $500</li>
+										</ul>
+									</div>
+								</div>
+							</div>
+							<!-- Tastings -->
+							<div class="col-12 col-lg-6 card-col">
+								<div class="card mb-5 mb-lg-0">
+									<div class="card-body">
+										<h4 class="card-title text-muted text-uppercase text-center">Tastings</h4>
+										<h6 class="card-price text-center">$100<span class="period"> /tasting</span></h6>
+										<hr>
+										<ul class="fa-ul">
+											<li><span class="fa-li"><i class="fas fa-check"></i></span>10 Tasting Minimum</li>
+											<li><span class="fa-li"><i class="fas fa-check"></i></span>Full Reporting</li>
+											<li><span class="fa-li"><i class="fas fa-check"></i></span>On &amp; Off Premise</li>
+											<li><span class="fa-li"><i class="fas fa-check"></i></span>Consumer Feedback</li>
+										</ul>
+									</div>
+								</div>
+							</div>
+							<!-- Consulting -->
+							<div class="col-12 col-lg-6 card-col">
+								<div class="card mb-5 mb-lg-0">
+									<div class="card-body">
+										<h4 class="card-title text-muted text-uppercase text-center">Consulting</h4>
+										<h6 class="card-price text-center">$100<span class="period"> /hr</span></h6>
+										<hr>
+										<ul class="fa-ul">
+											<li><span class="fa-li"><i class="fas fa-check"></i></span>5 hour minimum</li>
+											<li><span class="fa-li"><i class="fas fa-check"></i></span>Marketing Strategy</li>
+											<li><span class="fa-li"><i class="fas fa-check"></i></span>POS development</li>
+											<li><span class="fa-li"><i class="fas fa-check"></i></span>Pricing Strategy</li>
+										</ul>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div> 
+				</div>
+			</div>
+		</div>
+	</div> <!-- End Sales Modal -->
+
+	<!-- Sales Program Modal -->
+	<div class="modal fade" id="onlinePlatformModal" tabindex="-1" role="dialog" aria-labelledby="onlinePlatformModal" aria-hidden="true">
+		<div class="modal-dialog modal-dialog-centered" role="document">
+			<div class="modal-content">
+				<div class="modal-header text-center">
+					<h3 class="modal-title w-100 text-custom-dark" id="onlinePlatformModal">Online Platform</h3>
+					<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+						<span aria-hidden="true">&times;</span>
+					</button>
+				</div>
+				<div class="modal-body">
+					<div class="container">
+						<div class="row">
+							<!-- Online Platform -->
+							<div class="col-12 card-col">
+								<div class="card mb-5 mb-lg-0">
+									<div class="card-body">
+										<h4 class="card-title text-muted text-uppercase text-center"><i class="fas fa-laptop"></i></h4>
+										<h6 class="card-price text-center">$250<span class="period"> /mo</span></h6>
+										<hr>
+										<ul class="fa-ul">
+											<li><span class="fa-li"><i class="fas fa-check"></i></span>4 Sku's Included</li>
+											<li><span class="fa-li"><i class="fas fa-check"></i></span>Custom Landing Page</li>
+											<li><span class="fa-li"><i class="fas fa-check"></i></span>Online Ordering and Delivery for Customers</li>
+											<li><span class="fa-li"><i class="fas fa-check"></i></span>All Logistics and Packaging Included</li>
+											<li><span class="fa-li"><i class="fas fa-check"></i></span>Ship to Over 20 States</li>
+											<li><span class="fa-li"><i class="fas fa-check"></i></span>Setup Fee - $500</li>
+										</ul>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div> 
+				</div>
+			</div>
+		</div>
+	</div> <!-- End Sales Modal -->
 	
 	<!-- Giving Back Section-->
-	<section id="givingBack" class="giving-back-section">
+	<section id="givingBack" class="giving-back-section bg-white">
 		<div class="container">
 			<!-- Header -->
 			<div class="row">
@@ -69,7 +248,7 @@
 				</div>
 			</div>
 
-			<!-- Featured Project Row -->
+			<!-- Donation Row -->
 			<div class="row align-items-center no-gutters mb-4 mb-lg-5">
 				<div class="col-xl-8 col-lg-7">
 					<img class="img-fluid mb-3 mb-lg-0" src="/images/donation.jpg" alt="">
@@ -77,12 +256,12 @@
 				<div class="col-xl-4 col-lg-5">
 					<div class="featured-text text-center text-lg-left">
 						<h4>Donation</h4>
-						<p class="text-dark-50 mb-0">BluRack donates 10% of ALL profits to extraordinary causes</p>
+						<p class="text-dark-50 mb-0">BluRack donates <b>10%</b> of all profits to extraordinary causes</p>
 					</div>
 				</div>
 			</div>
 
-			<!-- Project One Row -->
+			<!-- Animals Row -->
 			<div class="row justify-content-center no-gutters mb-5 mb-lg-0">
 				<div class="col-lg-6">
 					<img class="img-fluid" src="/images/animals.jpg" alt="">
@@ -104,7 +283,7 @@
 				</div>
 			</div>
 
-			<!-- Project Two Row -->
+			<!-- Health Row -->
 			<div class="row justify-content-center no-gutters">
 				<div class="col-lg-6">
 					<img class="img-fluid" src="/images/health.jpeg" alt="">

@@ -4,21 +4,21 @@ const router = express.Router();
 // GET -- Home Page 
 router.get('/', (req, res) => {
 	res.render('index', { 
-		title: 'BluRack' 
+		title: 'BluRack | Spirits Company' 
 	});
 });
 
 // GET -- Services Page
 router.get('/services', (req, res) => {
 	res.render('services', {
-		title: 'Services'
+		title: 'BluRack | Services'
 	});
 });
 
 // GET -- Contact Page
 router.get('/contact-us', (req, res) => {
 	res.render('contact_us', {
-		title: 'Contact Us'
+		title: 'BluRack | Contact Us'
 	});
 });
 
