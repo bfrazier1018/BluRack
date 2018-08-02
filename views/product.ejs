@@ -1,0 +1,53 @@
+	<!-- Header -->
+	<% include partials/header.ejs %>
+ 	
+ 	<!-- Brands Header Image -->
+    <header class="product-page">
+      <div class="container">
+      </div>
+    </header>
+
+    <section class="product-section">
+    	<div class="container">
+    		<!-- Header -->
+			<div class="row">
+				<div class="col-12">
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-12 col-md-4 text-center"> 
+					<img id="product-img-view" src="/product_images/<%= product.id %>/<%= product.image %>" alt="">
+					<br>
+				</div>
+
+				<div class="col-xs-12 col-md-8">
+					<h3 id="products"><%= product.name %></h3>
+					<p><%= product.description %></p>
+					<p>$<%= parseFloat(product.price).toFixed(2) %></p>
+					<p><a class="btn btn-primary" href="/cart/add/<%= product.slug %>">Add to Cart</a></p>
+				</div>
+				
+				<div class="row">
+					<div class="col-xs-12">
+						<ul class="gallery">
+							<% galleryImages.forEach(function(image) { %>
+								<% if (image != "thumbs") { %>
+									<li>
+										<a data-fancybox="gallery" href="/product_images/<%= product.id %>/gallery/<%= image %>">
+											<img src="/product_images/<%= product.id %>/gallery/thumbs/<%= image%>" alt="">
+										</a>
+									</li>
+								<% } %>
+							<% });%>
+						</ul>
+					</div>
+				</div>
+			</div>
+    	</div>
+    </section>
+
+	<!-- Footer & Scripts -->
+    <% include partials/footer.ejs %>    
+
+</body>
+</html> <!-- End Html -->

@@ -1,0 +1,51 @@
+	<!-- Header -->
+	<% include partials/header.ejs %>
+ 	
+ 	<!-- Brands Header Image -->
+    <header class="brands">
+      <div class="container">
+      </div>
+    </header>
+
+    <section class="brands-section">
+    	<div class="container">
+    		<!-- Header -->
+			<div class="row">
+				<div class="col-12 text-center">
+					<h1 id="products">Brands</h1>
+				</div>
+			</div>
+			<!-- Category Filter Links -->
+			<div class="row product-cat-filter-links text-center">
+				<div class="d-none d-sm-none d-md-block col-md-12">
+					<a class="btn btn-outline-info" href="/brands/#products">All (<%= products.length %>)</a>
+					<% categories.forEach(function(cat) { %>
+						<a class="btn btn-outline-info" href="/brands/<%= cat.slug %>/#products"><%= cat.name %></a>
+					<% }); %>
+				</div>
+			</div>
+    		<div class="row">
+    			<% products.forEach(function(product) { %>
+					<div class="col-12 col-lg-2 text-center">
+	          			<a class="pa" href="/brands/<%= product.category %>/<%= product.slug %>">
+							<img class="product-image" src="/product_images/<%= product.id %>/<%= product.image %>" alt="" >
+						</a>
+        			</div>
+        			<div class="col-12 col-lg-4 products-desc-col">
+        				<h3><%= product.name %></h3>
+						<p class="text-muted">
+							<%= product.description %>...&nbsp; <a class="vd" href="/brands/<%= product.category %>/<%= product.slug %>">View More</a>
+						</p>
+						<p><b>$<%= parseFloat(product.price).toFixed(2) %></b></p>
+						<a class="btn btn-primary" href="/cart">Add to Cart</a>
+        			</div>
+	          	<% }); %>
+    		</div>
+    	</div>
+    </section>
+
+	<!-- Footer & Scripts -->
+    <% include partials/footer.ejs %>    
+
+</body>
+</html> <!-- End Html -->

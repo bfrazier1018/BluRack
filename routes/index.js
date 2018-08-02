@@ -9,15 +9,15 @@ router.get('/', (req, res) => {
 });
 
 // GET -- Services Page
-router.get('/services', (req, res) => {
-	res.render('services', {
-		title: 'BluRack | Services'
-	});
-});
+// router.get('/services', (req, res) => {
+// 	res.render('services', {
+// 		title: 'BluRack | Services'
+// 	});
+// });
 
 // GET -- Contact Page
 router.get('/contact-us', (req, res) => {
-	res.render('contact_us', {
+	res.render('contact', {
 		title: 'BluRack | Contact Us'
 	});
 });

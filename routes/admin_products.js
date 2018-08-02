@@ -88,7 +88,7 @@ router.get('/add-product', (req, res) => {
     var twitter = "";
     var instagram = "";
 
-    Category.find( (err, categories) => {
+    Category.find({}).sort({sorting: 1}).exec((err, categories) => {
         res.render('admin/add_product', {
             title: 'Add Product',
             name: name, 

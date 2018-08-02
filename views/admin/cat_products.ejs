@@ -35,7 +35,7 @@
 								<tbody>
 									<% products.forEach(function(product) { %>
 										<tr id="id_<%= product.id %>" class="<%= product.slug %>">
-											<td>
+											<td class="text-center">
 												<% if (product.image == "") { %>
 													<img id="productImage" src="/images/noimage.png" alt="">
 												<% } else { %>

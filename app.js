@@ -22,7 +22,8 @@ db.once('open', () => {
 });
 
 // Import Routes
-const pagesRouter = require('./routes/pages');
+const indexRouter = require('./routes/index');
+const productsRouter = require('./routes/products');
 const usersRouter = require('./routes/users');
 const adminCategoriesRouter = require('./routes/admin_categories');
 const adminProductsRouter = require('./routes/admin_products');
@@ -119,10 +120,11 @@ Product.find({}).sort({sorting: 1}).exec(function(err, products) {
 // });
 
 // Use Routes
+app.use('/brands', productsRouter);
 app.use('/users', usersRouter);
 app.use('/admin/categories', adminCategoriesRouter);
 app.use('/admin/products', adminProductsRouter);
-app.use('/', pagesRouter);
+app.use('/', indexRouter);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
