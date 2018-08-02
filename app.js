@@ -24,6 +24,7 @@ db.once('open', () => {
 // Import Routes
 const indexRouter = require('./routes/index');
 const productsRouter = require('./routes/products');
+const cartRouter = require('./routes/cart');
 const usersRouter = require('./routes/users');
 const adminCategoriesRouter = require('./routes/admin_categories');
 const adminProductsRouter = require('./routes/admin_products');
@@ -113,14 +114,15 @@ Product.find({}).sort({sorting: 1}).exec(function(err, products) {
 // app.use(passport.session());
 
 // Global Variables
-// app.get('*', (req, res, next) => {
-//   res.locals.cart = req.session.cart;
-//   res.locals.user = req.user || null;
-//   next();
-// });
+app.get('*', (req, res, next) => {
+  res.locals.cart = req.session.cart;
+  res.locals.user = req.user || null;
+  next();
+});
 
 // Use Routes
 app.use('/brands', productsRouter);
+app.use('/cart', cartRouter);
 app.use('/users', usersRouter);
 app.use('/admin/categories', adminCategoriesRouter);
 app.use('/admin/products', adminProductsRouter);

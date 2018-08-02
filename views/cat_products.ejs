@@ -6,7 +6,16 @@
       <div class="container">
       </div>
     </header>
-
+	
+	<!-- Display Messages -->
+	<div class="container messages-container">
+		<% if (messages.length > 0 ) { %>
+			<div class="alert alert-success">
+				<%= messages %>
+			</div>
+		<% } %>
+	</div>
+	
     <section class="brands-section">
     	<div class="container">
     		<!-- Header -->
@@ -37,7 +46,7 @@
 							<%= product.description %>...&nbsp; <a class="vd" href="/brands/<%= product.category %>/<%= product.slug %>">View More</a>
 						</p>
 						<p><b>$<%= parseFloat(product.price).toFixed(2) %></b></p>
-						<a class="btn btn-primary" href="/cart">Add to Cart</a>
+						<a class="btn btn-primary" href="/cart/add/<%= product.slug %>">Add to Cart</a>
         			</div>
 	          	<% }); %>
     		</div>

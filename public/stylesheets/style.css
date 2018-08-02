@@ -92,6 +92,11 @@ h6 {
     border-bottom: 2px solid #fff;
 }
 
+/* Cart Nav Font Size */
+#cartFont {
+    font-size: 22px;
+}
+
 /* Cart & Login Hover */
 #mainNav .navbar-nav .cart:hover {
     border: none !important;
@@ -426,7 +431,7 @@ section.brands-section h1 {
 /* Header  Image */
 header.product-page {
     text-align: center;
-    height: 200px;
+    height: 115px;
     background-color: #212529;
 }
 
@@ -450,19 +455,6 @@ ul.gallery li {
 
 img.cpi {
     width: 100px;
-}
-
-/* Large Devices */
-@media (min-width: 768px) {
-    header.product-page {
-        height: 125px;
-   }
-    section.product-page h1 {
-        font-size: 65px;
-        margin-top: 0;
-        font-style: italic;
-        margin-bottom: 75px;
-    }
 }
 
 /* ------------------------ Contact Page --------------------------------- */
@@ -563,6 +555,24 @@ section#contact :-ms-input-placeholder {
 
 .map iframe {
     pointer-events: none;
+}
+
+/* ---------------------------- Checkout Page ---------------------- */
+/* Header  Image */
+header.checkout-page {
+    text-align: center;
+    height: 115px;
+    background-color: #212529;
+}
+
+#checkout-product-img {
+  max-width: 90px;
+  max-height: 100px;
+}
+
+/* ---------------------- Messages Display ------------------------ */
+.messages-container {
+    margin-top: 25px;
 }
 
 /* ------------------------ Footer --------------------------------- */

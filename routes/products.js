@@ -19,7 +19,8 @@ router.get('/', (req, res) => {
 			res.render('products', {
 				title: 'BluRack | Brands',
 				products: products,
-				categories: categories
+				categories: categories,
+				messages: req.flash('success')
 			});
 		});
 	})
@@ -38,7 +39,8 @@ router.get('/:category', (req, res) => {
 				res.render('cat_products', { 
 					title: 'BluRack | '+ category.name,
 					categories: categories,
-					products: products
+					products: products,
+					messages: req.flash('success')
 				});		
 			});
 		});	
@@ -65,7 +67,7 @@ router.get('/:category/:product', (req, res) => {
 						title: 'BluRack | ' + product.name,
 						product: product,
 						galleryImages: galleryImages,
-						// messages: req.flash('success'),
+						messages: req.flash('success')
 						// loggedIn: loggedIn
 					});
 				}

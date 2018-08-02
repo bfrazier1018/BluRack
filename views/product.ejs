@@ -3,9 +3,18 @@
  	
  	<!-- Brands Header Image -->
     <header class="product-page">
-      <div class="container">
-      </div>
+     	<div class="container">
+      	</div>
     </header>
+
+    <!-- Display Messages -->
+	<div class="container messages-container">
+		<% if (messages.length > 0 ) { %>
+			<div class="alert alert-success">
+				<%= messages %>
+			</div>
+		<% } %>
+	</div>
 
     <section class="product-section">
     	<div class="container">
