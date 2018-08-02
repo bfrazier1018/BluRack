@@ -3,10 +3,67 @@ const router = express.Router();
 
 // Get Product Model
 const Product = require('../models/product');
+const Order = require('../models/order');
 
 // ************************* /cart ****************************
 
-// Get Add Product to Cart
+// GET -- Cart Page
+router.get('/', (req, res) => {
+
+	if (req.session.cart && req.session.cart.length == 0 ) {
+		delete req.session.cart;
+		res.redirect('/cart');
+	} else {
+		res.render('cart', {
+			title: 'BluRack | Cart',
+			cart: req.session.cart,
+			messages: req.flash('success')
+		});
+	}
+});
+
+// GET -- Checkout Page
+router.get('/checkout', (req, res) => {
+
+	if (typeof req.session.cart == 'undefined') {
+		delete req.session.cart;
+		res.redirect('/cart');
+	} else {
+		var firstName = "";
+		var lastName = "";
+		var company = "";
+		var country = "";
+		var address = "";
+		var unitNumber = "";
+		var city = "";
+		var state = "";
+		var zip = "";
+		var phone = "";
+		var email = "";
+
+		res.render('checkout', {
+			title: 'BluRack | Checkout',
+			cart: req.session.cart,
+			firstName: firstName,
+			lastName: lastName,
+			phone: phone,
+			email: email,
+			company: company,
+			country: country,
+			address: address,
+			unitNumber: unitNumber,
+			city: city,
+			state: state,
+			zip: zip,
+		});
+	}
+	// delete req.session.cart;
+
+	// res.sendStatus(200);
+
+});
+
+// GET -- Add Product to Cart
 router.get('/add/:product', (req, res) => {
   
 	var slug = req.params.product;
@@ -46,27 +103,12 @@ router.get('/add/:product', (req, res) => {
 		}
 
 		// console.log(req.session.cart);
-		req.flash('success', 'Product Added to Cart!');
+		req.flash('success', product.name + ' Added to Cart!');
 		res.redirect('back');
 	});
 });
 
-// GET Checkout Page
-router.get('/checkout', (req, res) => {
-
-	if (req.session.cart && req.session.cart.length == 0 ) {
-		delete req.session.cart;
-		res.redirect('/cart/checkout');
-	} else {
-		res.render('checkout', {
-			title: 'BluRack | Checkout',
-			cart: req.session.cart,
-			messages: req.flash('success')
-		});
-	}
-});
-
-// GET Update Product
+// GET -- Update Product
 router.get('/update/:product', (req, res) => {
 
 	var slug = req.params.product;
@@ -96,26 +138,98 @@ router.get('/update/:product', (req, res) => {
 	}
 
 	req.flash('success', 'Cart Updated!');
-	res.redirect('/cart/checkout');
+	res.redirect('/cart');
 });
 
-// GET Clear Cart 
+// GET -- Clear Cart 
 router.get('/clear', (req, res) => {
 
 	delete req.session.cart;
 
 	req.flash('success', 'Cart Cleared!');
-	res.redirect('/cart/checkout');
+	res.redirect('/cart');
 
 });
 
-// GET Buy Now 
-router.get('/buynow', (req, res) => {
+// GET -- Checkout Page 
+router.get('/checkout/paypal', (req, res) => {
 
 	delete req.session.cart;
-
 	res.sendStatus(200);
 
 });
+
+// POST - New Order
+router.post('/checkout/pay', (req, res) => {
+  
+  	// Express Validator
+  	req.checkBody('firstName', 'First Name must have a value').notEmpty();
+  	req.checkBody('lastName', 'Last Name must have a value').notEmpty();
+  	req.checkBody('email', 'Email must have a value').notEmpty();
+  	req.checkBody('phone', 'Phone must have a value').notEmpty();
+  	req.checkBody('address', 'Address must have a value').notEmpty();
+  	req.checkBody('city', 'Town / City must have a value').notEmpty();
+  	req.checkBody('zip', 'Zip must have a value').notEmpty();
+
+	var firstName = req.body.firstName;
+	var lastName = req.body.lastName;
+	var email = req.body.email;
+	var phone = req.body.phone;
+	var company = req.body.company;
+	var country = req.body.country;
+	var address = req.body.address;
+	var unitNumber = req.body.unitNumber; 
+	var city = req.body.city; 
+	var state = req.body.state; 
+	var zip = req.body.zip; 
+
+	var errors = req.validationErrors();
+
+	if (errors) {
+		res.render('checkout', {
+			errors: errors,
+			title: 'BluRack | Checkout',
+			cart: req.session.cart,
+			firstName: firstName,
+			lastName: lastName,
+			phone: phone,
+			email: email,
+			company: company,
+			country: country,
+			address: address,
+			unitNumber: unitNumber,
+			city: city,
+			state: state,
+			zip: zip,
+		});
+	} else {
+		// Create New Order
+	  	var order = new Order({
+	  		firstName: firstName,
+	  		lastName: lastName,
+			email: email,
+			phone: phone,
+			company: company,
+			country: country,
+			address: address,
+			unitNumber: unitNumber,
+			city: city,
+			state: state,
+			zip: zip,
+			date: new Date(),
+	  	});
+
+	  	// Save Order
+	  	order.save((err) => {
+	  		if (err) console.log(err);
+
+	  		delete req.session.cart;
+
+	  		res.redirect('/cart');
+			// res.sendStatus(200);
+	  	});
+  	}
+});
+
 
 module.exports = router;

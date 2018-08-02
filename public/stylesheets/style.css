@@ -575,6 +575,11 @@ header.checkout-page {
     margin-top: 25px;
 }
 
+.required-asterik {
+    color: #00b7ff;
+    font-size: 22px;
+}
+
 /* ------------------------ Footer --------------------------------- */
 #myFooter {
     background-color: #373a48;
