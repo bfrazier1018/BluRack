@@ -1,23 +1,46 @@
 	<!-- Admin Header -->
 	<%- include('./admin_header.ejs') %>
 
-	<div class="container-fluid"> <!-- Open Container Fluid  -->
+	<div class="container-fluid"> 
+		
+		<!-- Add Category -->
+		<div class="row">
+			<div class="col-12 col-md-3">
 
-		<!-- Display Messages -->
+				<!-- Display Errors -->
+				<% if (typeof errors !== 'undefined' ) { %>
+					<% errors.forEach(function(error) { %>
+						<div class="alert alert-danger">
+							<%= error.msg %>
+						</div>
+					<%});%>
+				<% } %>
+
+			<!-- Display Messages -->
 			<% if (messages.length > 0 ) { %>
 				<div class="alert alert-success">
 					<%= messages %>
 				</div>
 			<% } %>
+				<!-- Add Category Title -->
+				<h5 class="page-title">Add New Category</h5>
+		
+				<!--  Form -->
+				<form autocomplete="off" action="/admin/categories/add-category" method="post">
+					<!-- Name -->
+					<div class="form-group">
+						<input type="text" class="form-control" name="name" value="<%= name %>" placeholder="Name *">
+					</div>
 
+					<!-- Submit Button -->
+					<button type="submit" class="btn btn-primary btn-sm">Add Category</button>
+				</form>
+			</div>
+		</div>
+		
+		<br>
 		<!-- Page Title -->
 		<h2 class="page-title">Categories</h2>
-		
-		<!-- Page Links -->
-		<div class="page-links">
-			<a class="btn btn-outline-primary btn-sm" href="/admin/categories/add-category">Add New</a>
-			<a class="btn btn-outline-secondary btn-sm" href="/admin/categories">All (<%= categories.length %>)</a>
-		</div>
 
 		<!-- Categories Table -->
 		<div class="card mb-3">
@@ -48,7 +71,7 @@
 			<div class="card-footer small text-muted">There are <%= categories.length%> categories.</div>
 		</div>
 
-	</div> <!-- End Container Fluid -->
+	</div> <!-- End Container -->
 
 	<!-- Footer & Scripts -->
 	<%- include('./admin_footer.ejs') %>

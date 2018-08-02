@@ -69,22 +69,21 @@
 
     <!-- Sidebar -->
     <ul class="sidebar navbar-nav">
-        <li class="nav-item active">
-            <a class="nav-link" href="/admin/categories/dashboard">
+        <!-- Dashboard -->
+        <li class="nav-item">
+            <a class="nav-link" href="/admin">
                 <i class="fas fa-tachometer-alt fa-fw"></i>
                 <span>Dashboard</span>
             </a>
         </li>
-        <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle" href="#" id="categoriesDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        <!-- Categories -->
+        <li class="nav-item">
+            <a class="nav-link" href="/admin/categories">
                 <i class="fas fa-folder-open fa-fw"></i>
                 <span>Categories</span>
             </a>
-            <div class="dropdown-menu" aria-labelledby="categoriesDropdown">
-                <a class="dropdown-item" href="/admin/categories">All Categories</a>
-                <a class="dropdown-item" href="/admin/categories/add-category">New Category</a>
-            </div>
         </li>
+        <!-- Products -->
         <li class="nav-item dropdown">
             <a class="nav-link dropdown-toggle" href="#" id="productsDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                 <i class="fas fa-glass-martini fa-fw"></i>
@@ -93,6 +92,16 @@
             <div class="dropdown-menu" aria-labelledby="productsDropdown">
                 <a class="dropdown-item" href="/admin/products">All Products</a>
                 <a class="dropdown-item" href="/admin/products/add-product">New Product</a>
+            </div>
+        </li>
+        <!-- Orders -->
+        <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="ordersDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <i class="fas fa-shopping-cart fa-fw"></i>
+                <span>Orders</span>
+            </a>
+            <div class="dropdown-menu" aria-labelledby="ordersDropdown">
+                <a class="dropdown-item" href="/admin/orders">All Orders</a>
             </div>
         </li>
     </ul>

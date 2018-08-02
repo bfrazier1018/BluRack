@@ -1,68 +1,36 @@
 var express = require('express');
 var router = express.Router();
 
-// Get Category Model
-var Category = require('../models/category.js');
+// Get Order Model
+var Order = require('../models/order.js');
 
-// ----------------------- /admin/categories -------------------
+// ----------------------- /admin/orders -------------------
 
-// GET -- All Categories
+// GET -- All Orders
 router.get('/', (req, res) => {
-
-    var name = "";
     
-    Category.find({}).sort({sorting: 1}).exec((err, categories) => {
+    Order.find((err, orders) => {
         if (err) console.log(err);
 
-        res.render('admin/categories', {
-            title: 'Admin | Categories',
-            name: name,
-            categories: categories,
+        res.render('admin/orders', {
+            title: 'Admin | Orders',
+            orders: orders,
             messages: req.flash('success')
         });
     });
 });
 
-// Sort Categories Function
-function sortCategories(ids, callback) {
+// GET -- Add Category
+router.get('/add-category', (req, res) => {
+ 
+    var name = "";
 
-    var count = 0;
-
-    for (let i = 0; i < ids.length; i++) {
-        var id = ids[i];
-        count++;
-
-        (function(count) {
-            Category.findById(id, (err, category) => {
-                category.sorting = count;
-                category.save((err) => {
-                    if (err) console.log(err);
-                    count++;
-                    if (count >= ids.length) {
-                        callback();
-                    }
-                });
-            });
-        })(count);
-    }
-};
-
-// POST -- Reorder Categories
-router.post('/reorder-categories', (req, res) => {
-
-    var ids = req.body['id[]'];
-
-    sortCategories(ids, () => {
-        Category.find({}).sort({sorting: 1}).exec(function(err, categories) {
-            if (err) {
-                console.log(err);
-            } else {
-                req.app.locals.categories = categories;
-            }
-        });
+    res.render('admin/add_category', {
+        title: 'Add Category',
+        name: name,
+        messages: []
     });
 });
-
 
 // POST -- Add Category
 router.post('/add-category', (req, res) => {
@@ -77,11 +45,11 @@ router.post('/add-category', (req, res) => {
     var errors = req.validationErrors();
 
     if (errors) {
-        res.render('admin/categories', {
+        res.render('admin/add_category', {
             errors: errors,
             name: name,
             slug: slug,
-            title: 'Admin | Categories',
+            title: 'Add Category',
             messages: []
         });
 
@@ -91,9 +59,9 @@ router.post('/add-category', (req, res) => {
         Category.findOne({ slug: slug }, (err, category) => {
             if (category) {
                 req.flash('danger', 'Category Name Exists, Choose Another');
-                res.render('admin/categories', {
+                res.render('admin/add_category', {
                     name: name,
-                    title: 'Admin | Categories',
+                    title: 'Add Category',
                     messages: req.flash('danger')
                 });
             } else {
@@ -217,5 +185,4 @@ router.get('/delete-category/:id', (req, res) => {
 });
 
 module.exports = router;
-
 

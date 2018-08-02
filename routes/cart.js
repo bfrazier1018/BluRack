@@ -216,7 +216,7 @@ router.post('/checkout/pay', (req, res) => {
 			city: city,
 			state: state,
 			zip: zip,
-			date: new Date(),
+			date: new Date("2015-03-25T12:00"),
 	  	});
 
 	  	// Save Order
