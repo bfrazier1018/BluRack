@@ -25,7 +25,7 @@ router.get('/', (req, res) => {
 // GET -- Checkout Page
 router.get('/checkout', (req, res) => {
 
-	if (typeof req.session.cart == 'undefined') {
+	if (typeof req.session.cart == 'undefined' || req.session.cart.length == 0 ) {
 		delete req.session.cart;
 		res.redirect('/cart');
 	} else {

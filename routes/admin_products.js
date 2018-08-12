@@ -78,29 +78,56 @@ router.post('/reorder-products', (req, res) => {
 router.get('/add-product', (req, res) => {
 
     var name = "";
-    var desc = "";
     var price = "";
     var sku = "";
+    var shortDescription = "";
     var description = "";
+    var stockStatus = "";
     var website = "";
-    var company = "";
     var facebook = "";
-    var twitter = "";
-    var instagram = "";
+    var weight = "";
+    var length = "";
+    var width = width;
+    var height = "";
+    var countryOfManufacture = "";
+    var shippingClass = "";
+    var HSTariffNumber = "";
+    var specialServices = "";
+    var alcoholRecipient = "";
+    var dangerousGoodsRegulation = "";
+    var dangerousGoodsAccessibility = "";
+    var customDeclaredValue = "";
+    var freightClass = "";
+    var prePackedProduct = "";
+    var nonStandardProduct = "";
 
     Category.find({}).sort({sorting: 1}).exec((err, categories) => {
         res.render('admin/add_product', {
             title: 'Add Product',
-            name: name, 
-            description: description,
+            name: name,
             categories: categories,
             price: price,
             sku: sku,
+            shortDescription: shortDescription, 
+            description: description,
+            stockStatus: stockStatus,
             website: website,
-            company: company,
             facebook: facebook,
-            twitter: twitter,
-            instagram: instagram,
+            weight: weight,
+            length: length,
+            width: width,
+            height: height,
+            shippingClass: shippingClass,
+            HSTariffNumber: HSTariffNumber,
+            countryOfManufacture: countryOfManufacture,
+            specialServices: specialServices,
+            alcoholRecipient: alcoholRecipient,
+            dangerousGoodsRegulation: dangerousGoodsRegulation,
+            dangerousGoodsAccessibility: dangerousGoodsAccessibility,
+            customDeclaredValue: customDeclaredValue,
+            freightClass: freightClass,
+            prePackedProduct: prePackedProduct,
+            nonStandardProduct: nonStandardProduct,
             messages: []
         });
     });
@@ -113,15 +140,38 @@ router.post('/add-product', (req, res) => {
 
     // Express Validator
     req.checkBody('name', 'Name must have a value!').notEmpty();
-    req.checkBody('description', 'Description must have a value!').notEmpty();
+    req.checkBody('shortDescription', 'Short Description must have a value!').notEmpty();
     req.checkBody('price', 'Price must have a value!').isDecimal();
     req.checkBody('image', 'You must upload an image!').isImage(imageFile);
 
     var name = req.body.name;
     var slug = name.replace(/\s+/g, '-').toLowerCase();
+    var sku = req.body.sku;
+    var shortDescription = req.body.shortDescription;
     var description = req.body.description;
-    var price = req.body.price;
+        if (description === "") {
+            description = shortDescription;
+        }
     var category = req.body.category;
+    var price = req.body.price;
+    var stockStatus = req.body.stockStatus;
+    var website = req.body.website;
+    var facebook = req.body.facebook;
+    var weight = req.body.weight;
+    var length = req.body.length;
+    var width = req.body.width;
+    var height = req.body.height;
+    var countryOfManufacture = req.body.countryOfManufacture;
+    var shippingClass = req.body.shippingClass;
+    var HSTariffNumber = req.body.HSTariffNumber;
+    var specialServices = req.body.specialServices;
+    var alcoholRecipient = req.body.alcoholRecipient;
+    var dangerousGoodsRegulation = req.body.dangerousGoodsRegulation;
+    var dangerousGoodsAccessibility = req.body.dangerousGoodsAccessibility;
+    var customDeclaredValue = req.body.customDeclaredValue;
+    var freightClass = req.body.freightClass;
+    var prePackedProduct = req.body.prePackedProduct;
+    var nonStandardProduct = req.body.nonStandardProduct;
 
     var errors = req.validationErrors();
 
@@ -131,9 +181,28 @@ router.post('/add-product', (req, res) => {
             res.render('admin/add_product', {
                 errors: errors,
                 title: 'Add Product',
-                name: name, 
-                description: description,
+                name: name,
+                sku: sku,
                 categories: categories,
+                shortDescription: shortDescription,
+                description: description,
+                website: website, 
+                facebook: facebook,
+                weight: weight,
+                length: length,
+                width: width, 
+                height: height,
+                shippingClass: shippingClass,
+                HSTariffNumber: HSTariffNumber,
+                countryOfManufacture: countryOfManufacture,
+                specialServices: specialServices,
+                alcoholRecipient: alcoholRecipient,
+                dangerousGoodsRegulation: dangerousGoodsRegulation,
+                dangerousGoodsAccessibility: dangerousGoodsAccessibility,
+                customDeclaredValue: customDeclaredValue,
+                freightClass: freightClass,
+                prePackedProduct: prePackedProduct,
+                nonStandardProduct: nonStandardProduct,
                 price: price,
                 messages: []
             });
@@ -147,9 +216,29 @@ router.post('/add-product', (req, res) => {
                     res.render('admin/add_product', {
                         title: 'Add Product', 
                         name: name,
-                        description: description,
                         categories: categories,
                         price: price,
+                        sku: sku,
+                        shortDescription: shortDescription, 
+                        description: description,
+                        stockStatus: stockStatus,
+                        website: website,
+                        facebook: facebook,
+                        weight: weight,
+                        length: length,
+                        width: width,
+                        height: height,
+                        shippingClass: shippingClass,
+                        HSTariffNumber: HSTariffNumber,
+                        countryOfManufacture: countryOfManufacture,
+                        specialServices: specialServices,
+                        alcoholRecipient: alcoholRecipient,
+                        dangerousGoodsRegulation: dangerousGoodsRegulation,
+                        dangerousGoodsAccessibility: dangerousGoodsAccessibility,
+                        customDeclaredValue: customDeclaredValue,
+                        freightClass: freightClass,
+                        prePackedProduct: prePackedProduct,
+                        nonStandardProduct: nonStandardProduct,
                         messages: req.flash('danger')
                     });
                 });
@@ -159,10 +248,30 @@ router.post('/add-product', (req, res) => {
                     name: name,
                     slug: slug,
                     sorting: 300,
+                    category: category,
+                    sku: sku,
+                    shortDescription: shortDescription,
                     description: description,
                     price: priceFormated,
-                    category: category,
-                    image: imageFile
+                    image: imageFile,
+                    stockStatus: stockStatus,
+                    website: website,
+                    facebook: facebook,
+                    weight: weight,
+                    length: length,
+                    width: width,
+                    height: height,
+                    shippingClass: shippingClass,
+                    HSTariffNumber: HSTariffNumber,
+                    countryOfManufacture: countryOfManufacture,
+                    specialServices: specialServices,
+                    alcoholRecipient: alcoholRecipient,
+                    dangerousGoodsRegulation: dangerousGoodsRegulation,
+                    dangerousGoodsAccessibility: dangerousGoodsAccessibility,
+                    customDeclaredValue: customDeclaredValue,
+                    freightClass: freightClass,
+                    prePackedProduct: prePackedProduct,
+                    nonStandardProduct: nonStandardProduct
                 });
                 // Save Product
                 product.save(function(err) {
@@ -238,13 +347,33 @@ router.get('/edit-product/:id', (req, res) => {
 
                         res.render('admin/edit_product', {
                             title: 'Product View',
-                            name: product.name, 
                             errors: errors,
-                            description: product.description,
                             categories: categories,
                             category: product.category.replace(/\s+/g, '-').toLowerCase(),
-                            price: parseFloat(product.price).toFixed(2),
+                            name: product.name, 
+                            shortDescription: product.shortDescription,
                             image: product.image,
+                            price: parseFloat(product.price).toFixed(2),
+                            sku: product.sku,
+                            website: product.website,
+                            facebook: product.facebook,
+                            description: product.description,
+                            weight: product.weight,
+                            length: product.length,
+                            width: product.width,
+                            height: product.height,
+                            countryOfManufacture: product.countryOfManufacture,
+                            shippingClass: product.shippingClass,
+                            HSTariffNumber: product.HSTariffNumber,
+                            specialServices: product.specialServices,
+                            alcoholRecipient: product.alcoholRecipient,
+                            dangerousGoodsRegulation: product.dangerousGoodsRegulation,
+                            dangerousGoodsAccessibility: product.dangerousGoodsAccessibility,
+                            customDeclaredValue: product.customDeclaredValue,
+                            freightClass: product.freightClass,
+                            prePackedProduct: product.prePackedProduct,
+                            nonStandardProduct: product.nonStandardProduct,
+                            stockStatus: product.stockStatus,
                             galleryImages: galleryImages,
                             id: product._id,
                             messages: req.flash('success')
@@ -262,18 +391,40 @@ router.post('/edit-product/:id', (req, res) => {
     var imageFile = typeof req.files.image !== 'undefined' ? req.files.image.name : '';
 
     // Express Validator
-    req.checkBody('name', 'Name must have a value').notEmpty();
-    req.checkBody('description', 'Description must have a value').notEmpty();
-    req.checkBody('price', 'Price must have a value').isDecimal();
-    req.checkBody('image', 'You must upload an image').isImage(imageFile);
+    req.checkBody('name', 'Name must have a value!').notEmpty();
+    req.checkBody('shortDescription', 'Short Description must have a value!').notEmpty();
+    req.checkBody('price', 'Price must have a value!').isDecimal();
+    req.checkBody('image', 'You must upload an image!').isImage(imageFile);
 
     var name = req.body.name;
     var slug = name.replace(/\s+/g, '-').toLowerCase();
+    var sku = req.body.sku;
+    var shortDescription = req.body.shortDescription;
     var description = req.body.description;
-    var price = req.body.price;
+        if (description === "") {
+            description = shortDescription;
+        }
     var category = req.body.category;
-    var pimage = req.body.pimage;
-    var id = req.params.id
+    var price = req.body.price;
+    var website = req.body.website;
+    var facebook = req.body.facebook;
+    var weight = req.body.weight;
+    var length = req.body.length;
+    var width = req.body.width;
+    var height = req.body.height;
+    var countryOfManufacture = req.body.countryOfManufacture;
+    var shippingClass = req.body.shippingClass;
+    var HSTariffNumber = req.body.HSTariffNumber;
+    var specialServices = req.body.specialServices;
+    var alcoholRecipient = req.body.alcoholRecipient;
+    var dangerousGoodsRegulation = req.body.dangerousGoodsRegulation;
+    var dangerousGoodsAccessibility = req.body.dangerousGoodsAccessibility;
+    var customDeclaredValue = req.body.customDeclaredValue;
+    var freightClass = req.body.freightClass;
+    var prePackedProduct = req.body.prePackedProduct;
+    var nonStandardProduct = req.body.nonStandardProduct;
+    var stockStatus = req.body.stockStatus;
+
 
     var errors = req.validationErrors();
 

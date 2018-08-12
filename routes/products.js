@@ -27,25 +27,25 @@ router.get('/', (req, res) => {
 });
 
 // GET -- Products by Category
-router.get('/:category', (req, res) => {
+// router.get('/:category', (req, res) => {
 
-	var categorySlug = req.params.category;
+// 	var categorySlug = req.params.category;
 
-	Category.find({}).sort({sorting: 1}).exec((err, categories) => {
-		Category.findOne({slug: categorySlug}, (err, category) => {
-			Product.find({category: categorySlug}, (err, products) => {
-				if (err) console.log(err);
+// 	Category.find({}).sort({sorting: 1}).exec((err, categories) => {
+// 		Category.findOne({slug: categorySlug}, (err, category) => {
+// 			Product.find({category: categorySlug}, (err, products) => {
+// 				if (err) console.log(err);
 
-				res.render('cat_products', { 
-					title: 'BluRack | '+ category.name,
-					categories: categories,
-					products: products,
-					messages: req.flash('success')
-				});		
-			});
-		});	
-	})
-});
+// 				res.render('cat_products', { 
+// 					title: 'BluRack | '+ category.name,
+// 					categories: categories,
+// 					products: products,
+// 					messages: req.flash('success')
+// 				});		
+// 			});
+// 		});	
+// 	})
+// });
 
 // GET -- Product Details
 router.get('/:category/:product', (req, res) => {

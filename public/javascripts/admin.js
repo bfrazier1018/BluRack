@@ -2,6 +2,10 @@ $(function() {
 
 	"use strict"; // Start of use strict
 
+    // Hide on Load
+    $(".shippingSection").hide();
+    $(".inventorySection").hide();
+
   // Toggle the side navigation
   $("#sidebarToggle").click(function(e) {
     e.preventDefault();
@@ -36,6 +40,30 @@ $(function() {
       scrollTop: ($($anchor.attr('href')).offset().top)
     }, 1000, 'easeInOutExpo');
     event.preventDefault();
+  });
+
+    // General Section -- Add New Product
+  $(".generalButton").on('click', (event) => {
+      event.preventDefault();
+      $(".shippingSection").hide();
+      $(".inventorySection").hide();
+      $(".generalSection").show();
+  });
+
+  // Shipping Section -- Add New Product
+  $(".shippingButton").on('click', (event) => {
+      event.preventDefault();
+      $(".generalSection").hide();
+      $(".inventorySection").hide();
+      $(".shippingSection").show();
+  });
+
+  // Inventory Section -- Add New Product
+  $(".inventoryButton").on('click', (event) => {
+      event.preventDefault();
+      $(".generalSection").hide();
+      $(".shippingSection").hide();
+      $(".inventorySection").show();
   });
 
 	// Text Area CKEditor

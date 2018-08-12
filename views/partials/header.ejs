@@ -38,16 +38,14 @@
                 </ul>
                 <!-- Right Nav Links -->
                 <ul class="navbar-nav text-uppercase ml-auto">
-                    <li class="nav-item">
-                        <a class="nav-link js-scroll-trigger cart" href="/cart"><i class="fas fa-shopping-cart fa-2x"></i><span id="cartFont"> (
-                            <% if (typeof cart !== "undefined") { %>
-                                <%= cart.length %>
-                            <% } else { %>
-                                0
-                            <% } %> 
-                        )</span></a>
-                    </li>
-                    <li class="nav-item"><a class="nav-link js-scroll-trigger nav-right btn-primary" id="login" href="#">LOG IN</a></li>
+                    <% if (typeof cart !== "undefined") { %>
+                        <li class="nav-item">
+                            <a class="nav-link js-scroll-trigger nav-right" href="/cart"><i class="fas fa-shopping-cart fa-2x"></i><span id="cartFont"> (
+                                <%= cart.length %> )</span>
+                            </a>
+                        </li>
+                    <% } %> 
+                    <li class="nav-item"><a class="nav-link js-scroll-trigger nav-right" id="login" href="#">SIGN IN</a></li>
                 </ul>
             </div>
         </div>

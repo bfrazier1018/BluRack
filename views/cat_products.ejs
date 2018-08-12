@@ -1,4 +1,4 @@
-<!-- Header -->
+Header -->
 	<% include partials/header.ejs %>
  	
  	<!-- Brands Header Image -->
@@ -24,15 +24,7 @@
 					<h1 id="products">Brands</h1>
 				</div>
 			</div>
-			<!-- Category Filter Links -->
-			<div class="row product-cat-filter-links text-center">
-				<div class="d-none d-sm-none d-md-block col-md-12">
-					<a class="btn btn-outline-info" href="/brands/#products">All Brands</a>
-					<% categories.forEach(function(cat) { %>
-						<a class="btn btn-outline-info" href="/brands/<%= cat.slug %>/#products"><%= cat.name %></a>
-					<% }); %>
-				</div>
-			</div>
+			<!-- Display All Brands -->
     		<div class="row">
     			<% products.forEach(function(product) { %>
 					<div class="col-12 col-lg-2 text-center">
@@ -57,4 +49,4 @@
     <% include partials/footer.ejs %>    
 
 </body>
-</html> <!-- End Html -->
+</html> <!-- End Html

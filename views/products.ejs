@@ -24,15 +24,6 @@
 					<h1 id="products">Brands</h1>
 				</div>
 			</div>
-			<!-- Category Filter Links -->
-			<div class="row product-cat-filter-links text-center">
-				<div class="d-none d-sm-none d-md-block col-md-12">
-					<a class="btn btn-outline-info" href="/brands/#products">All (<%= products.length %>)</a>
-					<% categories.forEach(function(cat) { %>
-						<a class="btn btn-outline-info" href="/brands/<%= cat.slug %>/#products"><%= cat.name %></a>
-					<% }); %>
-				</div>
-			</div>
     		<div class="row">
     			<% products.forEach(function(product) { %>
 					<div class="col-12 col-lg-2 text-center">
@@ -43,10 +34,9 @@
         			<div class="col-12 col-lg-4 products-desc-col">
         				<h3><%= product.name %></h3>
 						<p class="text-muted">
-							<%= product.description %>...&nbsp; <a class="vd" href="/brands/<%= product.category %>/<%= product.slug %>">View More</a>
+							<%= product.description %>...
 						</p>
-						<p><b>$<%= parseFloat(product.price).toFixed(2) %></b></p>
-						<!-- <a class="btn btn-primary" href="/cart/add/<%= product.slug %>">Add to Cart</a> -->
+						<a class="vd" href="/brands/<%= product.category %>/<%= product.slug %>">View More</a>
         			</div>
 	          	<% }); %>
     		</div>

@@ -18,47 +18,279 @@
 				<%= messages %>
 			</div>
 		<% } %>
-		
-		<!-- Add Category -->
-		<div class="row input-form-row">
-			<div class="col-12 col-md-5">
 
-				<!-- Page Title -->
-				<h2 class="page-title">Add New Product</h2>
-		
-				<!--  Add Product Form -->
-				<form autocomplete="off" action="/admin/products/add-product" method="post" enctype="multipart/form-data">
-					<!-- Name -->
+		<!-- Page Title -->
+		<h2 class="page-title text-dark">Add New Product</h2>
+		<br>
+
+		<!--  Add Product Form -->
+		<form autocomplete="off" action="/admin/products/add-product" method="post" enctype="multipart/form-data">
+			<!-- Category Row -->
+			<div class="row text-muted">
+				<div class="col-12 col-lg-2">
 					<div class="form-group">
-						<input class="form-control" type="text" name="name" value="<%= name %>" placeholder="Name *">
-					</div>
-					<!-- Category -->
-					<div class="form-group">
-						<select name="category" class="form-control">
+						<label for="category">Category <span class="required-asterik">*</span></label>
+						<select name="category" class="form-control form-control-sm">
 							<% categories.forEach(function(category) { %>
 								<option value="<%= category.slug %>"><%= category.name %></option>
 							<% }); %>
 						</select>
 					</div>
-					<!-- Price -->
+				</div>
+			</div> 
+			<!-- Product Name Row -->
+			<div class="row text-muted">
+				<div class="col-12 col-lg-5">
 					<div class="form-group">
-						<input class="form-control" type="text" name="price" value="<%= price %>" placeholder="Price *">
+						<label for="name">Product Name <span class="required-asterik">*</span></label>
+						<input class="form-control" type="text" name="name" value="<%= name %>">
+					</div>
+				</div>
+			</div> 
+			<!-- Short Description Row -->
+			<div class="row text-muted">
+				<div class="col-12 col-lg-7">
+					<div class="form-group">
+						<label for="shortDescription">Short Description <span class="required-asterik">*</span></label>
+						<textarea cols="20" rows="4" class="form-control" name="shortDescription" placeholder="300 Character Max" maxlength="300"><%= description %></textarea> 
+					</div>
+				</div>
+			</div>
+			<!-- Display Image Row -->
+			<div class="row text-muted">
+				<div class="col-12 col-lg-4">
+					<div class="form-group">
+						<label for="image">Display Image <span class="required-asterik">*</span></label>
+						<input class="form-control-file" type="file" name="image" id="img">
+					</div>
+					<!-- Image Preview -->
+					<img src="/images/noimage.png" id="imgPreview">
+				</div>
+			</div> 
+			
+			<!-- Hide / Show Buttons -->
+			<hr>
+			<div class="row">
+				<div class="col-12">
+					<button class="btn btn-outline-primary btn-sm generalButton hideShowButton"><i class="fas fa-wrench"></i>&nbsp;General</button>
+					<button class="btn btn-outline-primary btn-sm shippingButton hideShowButton"><i class="fas fa-truck"></i>&nbsp;Shipping</button>
+					<button class="btn btn-outline-primary btn-sm inventoryButton hideShowButton"><i class="fas fa-archive"></i>&nbsp;Inventory</button>
+					<br>
+				</div>
+			</div>
+			<br>
+			<!-- **** General Section **** -->
+			<div class="generalSection text-muted">
+				<div class="col-12 col-lg-8">
+					<!-- Price -->
+					<div class="form-group row">
+						<label for="price" class="col-12 col-lg-2 col-form-label"><small>Price</small></label>
+						<div class="col-12 col-lg-3">
+							<input class="form-control form-control-sm" id="price" type="text" name="price" value="<%= price %>">
+						</div>
+					</div>
+					<!-- Sku -->
+					<div class="form-group row">
+						<label for="sku" class="col-12 col-lg-2 col-form-label"><small>Sku</small></label>
+						<div class="col-12 col-lg-4">
+							<input class="form-control form-control-sm" id="sku" type="text" name="sku" value="<%= sku %>">
+						</div>
+					</div>
+					<!-- Website -->
+					<div class="form-group row">
+						<label for="website" class="col-12 col-lg-2 col-form-label"><small>Website</small></label>
+						<div class="col-12 col-lg-7">
+							<input class="form-control form-control-sm" id="website" type="text" name="website" value="<%= website %>">
+						</div>
+					</div>
+					<!-- Facebook -->
+					<div class="form-group row">
+						<label for="facebook" class="col-12 col-lg-2 col-form-label"><small>Facebook</small></label>
+						<div class="col-12 col-lg-7">
+							<input class="form-control form-control-sm" id="facebook" type="text" name="facebook" value="<%= facebook %>">
+						</div>
 					</div>
 					<!-- Description -->
-					<div class="form-group">
-						<textarea cols="20" rows="5" class="form-control" name="description" placeholder="Description *"><%= description %></textarea> 
+					<div class="form-group row">
+						<label for="description" class="col-2 col-lg-2 col-form-label"><small>Description</small></label>
+						<div class="col-12 col-lg-10">
+							<textarea cols="20" rows="5" class="form-control" name="description" placeholder="Full Description"><%= description %></textarea> 
+						</div>
 					</div>
-					<!-- Image -->
-					<div class="form-group">
-						<input class="form-control" type="file" name="image" id="img">
-						<img src="#" id="imgPreview">
-					</div>
-
-					<!-- Submit Button -->
-					<button type="submit" class="btn btn-primary">Add Product</button>
-				</form>
+				</div>
 			</div>
-		</div>
+
+			<!-- **** Shipping Row **** -->
+			<div class="shippingSection text-muted">
+				<div class="col-12">
+					<!-- Weight Row -->
+					<div class="form-group row">
+						<label for="weight" class="col-12 col-lg-2 col-form-label"><small>Weight (lbs)</small></label>
+						<div class="col-12 col-lg-3">
+							<input class="form-control form-control-sm" type="text" id="weight" name="weight" value="<%= weight %>">
+						</div>
+					</div>
+					<!-- Dimensions Row -->
+					<div class="form-group row">
+						<label for="" class="col-12 col-lg-2 col-form-label"><small>Dimensions (in)</small></label>
+						<!-- Length -->
+						<div class="col-12 col-lg-1">
+							<input class="form-control form-control-sm" type="text" name="length" value="<%= length %>" placeholder="Length">
+						</div>
+						<!-- Width -->
+						<div class="col-12 col-lg-1">
+							<input class="form-control form-control-sm" type="text" name="width" value="<%= width %>" placeholder="Width">
+						</div>
+						<!-- Height -->
+						<div class="col-12 col-lg-1">
+							<input class="form-control form-control-sm" type="text" name="height" value="<%= height %>" placeholder="Height">
+						</div>
+					</div>
+					<!-- Shipping Class -->
+					<div class="form-group row">
+						<label for="shippingClass" class="col-12 col-lg-2 col-form-label"><small>Shipping Class</small></label>
+						<div class="col-12 col-lg-3">
+							<select name="shippingClass" id="shippingClass" class="form-control form-control-sm">
+								<option value="No Shipping Class">No Shipping Class</option>
+							</select>
+						</div>
+					</div>
+					<!-- HS Tariff Number -->
+					<div class="form-group row">
+						<label for="HSTariffNumber" class="col-12 col-lg-2 col-form-label"><small>HS Tariff Number</small></label>
+						<div class="col-12 col-lg-3">
+							<input class="form-control form-control-sm" type="text" id="HSTariffNumber" name="HSTariffNumber" value="<%= HSTariffNumber %>" placeholder="Harmonized System">
+						</div>
+					</div>
+					<!-- Country of Manufacture -->
+					<div class="form-group row">
+						<label for="countryOfManufacture" class="col-12 col-lg-2 col-form-label"><small>Country of Manufacture</small></label>
+						<div class="col-12 col-lg-3">
+							<input class="form-control form-control-sm" type="text" id="countryOfManufacture" name="countryOfManufacture" value="<%= countryOfManufacture %>">
+						</div>
+					</div>
+					<!-- Special Services -->
+					<div class="form-group row">
+						<label for="specialServices" class="col-12 col-lg-2 col-form-label"><small>Special Services (FedEx)</small></label>
+						<div class="col-12 col-lg-3">
+							<select name="specialServices" id="specialServices" class="form-control form-control-sm">
+								<option value="Alcohol">ALCOHOL</option>
+							</select>
+						</div>
+					</div>
+					<!-- Alcohol Recipient -->
+					<div class="form-group row">
+						<label for="alcoholRecipient" class="col-12 col-lg-2 col-form-label"><small>Alcohol Recipient (FedEx)</small></label>
+						<div class="col-12 col-lg-3">
+							<select name="alcoholRecipient" class="form-control form-control-sm">
+								<option value="Not Specified">Select</option>
+								<option value="CONSUMER">CONSUMER</option>
+								<option value="LICENSEE">LICENSEE</option>
+							</select>
+						</div>
+					</div>
+					<!-- Dangerous Goods Regulation -->
+					<div class="form-group row">
+						<label for="dangerousGoodsRegulation" class="col-12 col-lg-2 col-form-label"><small>Dangerous Goods Regulation (FexEx)</small></label>
+						<div class="col-12 col-lg-3">
+							<select name="dangerousGoodsRegulation" class="form-control form-control-sm">
+								<option value="DOT">DOT</option>
+								<option value="ADR">ADR</option>
+								<option value="IATA">IATA</option>
+								<option value="ORMD">ORMD</option>
+							</select>
+						</div>
+					</div>
+					<!-- Dangerous Goods Accessibility -->
+					<div class="form-group row">
+						<label for="dangerousGoodsAccessibility" class="col-12 col-lg-2 col-form-label"><small>Dangerous Goods Accessibility (FexEx)</small></label>
+						<div class="col-12 col-lg-3">
+							<select name="dangerousGoodsAccessibility" class="form-control form-control-sm">
+								<option value="Inaccessible">Inaccessible</option>
+								<option value="Acessible">Accessible</option>
+							</select>
+						</div>
+					</div>
+					<!-- Custom Declared Value -->
+					<div class="form-group row">
+						<label for="customDeclaredValue" class="col-12 col-lg-2 col-form-label"><small>Custom Declared Value</small></label>
+						<div class="col-12 col-lg-3">
+							<input class="form-control form-control-sm" type="text" id="customDeclaredValue" name="customDeclaredValue" value="<%= customDeclaredValue %>">
+						</div>
+					</div>
+					<!-- Freight Class -->
+					<div class="form-group row">
+						<label for="freightClass" class="col-12 col-lg-2 col-form-label"><small>Freight Class</small></label>
+						<div class="col-12 col-lg-3">
+							<select name="freightClass" class="form-control form-control-sm">
+								<option value="None">None</option>
+								<option value="CLASS_050">CLASS_050</option>
+								<option value="CLASS_055">CLASS_055</option>
+								<option value="CLASS_060">CLASS_060</option>
+								<option value="CLASS_065">CLASS_065</option>
+								<option value="CLASS_070">CLASS_070</option>
+								<option value="CLASS_077_5">CLASS_077_5</option>
+								<option value="CLASS_085">CLASS_085</option>
+								<option value="CLASS_092_5">CLASS_092_5</option>
+								<option value="CLASS_100">CLASS_100</option>
+								<option value="CLASS_110">CLASS_110</option>
+								<option value="CLASS_125">CLASS_125</option>
+								<option value="CLASS_150">CLASS_150</option>
+								<option value="CLASS_175">CLASS_175</option>
+								<option value="CLASS_200">CLASS_200</option>
+								<option value="CLASS_250">CLASS_250</option>
+								<option value="CLASS_300">CLASS_300</option>
+								<option value="CLASS_400">CLASS_400</option>
+								<option value="CLASS_500">CLASS_500</option>
+							</select>
+						</div>
+					</div>
+					<!-- Pre-Packed Product -->
+					<div class="form-group row">
+						<label for="prePackedProduct" class="col-12 col-lg-2 col-form-label"><small>Pre-Packed Product</small></label>
+						<div class="col-12 col-lg-3">
+							<select name="prePackedProduct" class="form-control form-control-sm">
+								<option value="">Select</option>
+								<option value="true">True</option>
+								<option value="false">False</option>
+							</select>
+						</div>
+					</div>
+					<!-- Non-Standard Product -->
+					<div class="form-group row">
+						<label for="nonStandardProduct" class="col-12 col-lg-2 col-form-label"><small>Non-Standard Product</small></label>
+						<div class="col-12 col-lg-3">
+							<select name="nonStandardProduct" class="form-control form-control-sm">
+								<option value="">Select</option>
+								<option value="true">True</option>
+								<option value="false">False</option>
+							</select>
+						</div>
+					</div>
+				</div>
+
+			</div>
+			
+			<!-- *** Inventory Section *** -->
+			<div class="inventorySection text-muted">
+				<div class="col-12 col-lg-8">
+					<!-- Stock Status -->
+					<div class="form-group row">
+						<label for="stockStatus" class="col-12 col-lg-2 col-form-label"><small>Stock Status</small></label>
+						<div class="col-12 col-lg-4">
+							<select name="stockStatus" class="form-control form-control-sm">
+								<option value="In Stock">In Stock</option>
+								<option value="Out of Stock">Out of Stock</option>
+								<option value="On Backorder">On Backorder</option>
+							</select>
+						</div>
+					</div>
+				</div>
+			</div>
+			<!-- Submit Button -->
+			<br>
+			<button type="submit" class="btn btn-primary">Add Product</button>
+		</form>
 
 	</div> <!-- End Container Fluid -->
 

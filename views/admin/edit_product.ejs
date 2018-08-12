@@ -18,86 +18,98 @@
 				<%= messages %>
 			</div>
 		<% } %>
-		
-		<!-- Add Category -->
-		<div class="row input-form-row">
-			<div class="col-12 col-md-5">
 
-				<!-- Page Title -->
-				<h2 class="page-title">Edit Product</h2>
-		
-				<!--  Add Product Form -->
-				<form autocomplete="off" action="/admin/products/edit-product/<%= id %>" method="post" enctype="multipart/form-data">
-					<!-- Name -->
-					<label for="">Name</label>
+		<!-- Page Title -->
+		<h2 class="page-title">Edit Product</h2>
+			
+		<!--  Edit Product Form -->
+		<form autocomplete="off" action="/admin/products/edit-product/<%= id %>" method="post" enctype="multipart/form-data">
+			<!-- Product Name Row -->
+			<div class="row text-muted">
+				<div class="col-12 col-lg-4">
 					<div class="form-group">
-						<input class="form-control" type="text" name="name" value="<%= name %>" placeholder="Name">
+						<label for="name">Product Name <span class="required-asterik">*</span></label>
+						<input class="form-control" type="text" name="name" value="<%= name %>">
 					</div>
-					<!-- Category -->
-					<div class="form-group">
-						<select name="category" class="form-control">
-							<% categories.forEach(function(cat) { %>
-								<option value="<%= cat.slug %>"
-									<% if (cat.slug == category) { %>
-										selected="selected"
-									<% } %>
-									><%= cat.name %>
-								</option>
-							<% }); %>
-						</select>
-					</div>
-					<!-- Price -->
-					<div class="form-group">
-						<input class="form-control" type="text" name="price" value="<%= price %>" placeholder="Price">
-					</div>
-					<!-- Description -->
-					<div class="form-group">
-						<textarea cols="20" rows="5" class="form-control" name="description" placeholder="Description"><%= description %></textarea> 
-					</div>
-					<!-- Image -->
-					<div class="form-group">
-						<h4><i class="far fa-image"></i>&nbsp;Current Image</h4>
-						<p>
-							<% if (image == '') { %>
-								<img id="productImage" src="/images/noimage.png" alt="">
-							<% } else { %>
-								<img id="productImage" src="/product_images/<%= id %>/<%= image %>" alt="">
-							<% } %>
-						</p>
-						<p><%= image %></p>
-					</div>
-					<div class="form-group">
-						<input class="form-control" type="file" name="image" id="img">
-						<img src="#" id="imgPreview">
-					</div>
-					<input type="hidden" name="pimage" value="<%= image %>">
-					<!-- Submit Button -->
-					<button type="submit" class="btn btn-primary">Update</button>
-				</form>
-
-				<!-- Gallery Images -->
-				<hr>
-				<h3 class="page-header">Gallery</h3>
-
-				<ul class="gallery">
-					<% galleryImages.forEach(function(image) { %>
-						<% if (image != "thumbs") { %>
-							<li>
-								<img class="productImage" src="/product_images/<%= id %>/gallery/thumbs/<%= image %>" alt="" >&nbsp;
-								<a class="confirmDeletion" href="/admin/products/delete-image/<%= image %>?id=<%= id %>">Delete</a>
-							</li>
-						<% } %>
-					<% }); %>
-				</ul>
-
-				<form class="dropzone" id="dropzoneForm" action="/admin/products/product-gallery/<%= id %>" method="post" enctype="multipart/form-data">
-					<div class="fallback">
-						<input type="file" name="file" multiple >
-						<input type="submit" value="Upload" >
-					</div>
-				</form>
+				</div>
+			</div> 
+			<!-- Category -->
+			<div class="row text-muted">
+				<div class="col-12 col-lg-2 form-group">
+					<label for="category">Category <span class="required-asterik">*</span></label>
+					<select name="category" class="form-control">
+						<% categories.forEach(function(cat) { %>
+							<option value="<%= cat.slug %>"
+								<% if (cat.slug == category) { %>
+									selected="selected"
+								<% } %>
+								><%= cat.name %>
+							</option>
+						<% }); %>
+					</select>
+				</div>
 			</div>
-		</div>
+			<!-- Short Description Row -->
+			<div class="row text-muted">
+				<div class="col-12 col-lg-7">
+					<div class="form-group">
+						<label for="shortDescription">Short Description <span class="required-asterik">*</span></label>
+						<textarea cols="20" rows="4" class="form-control" name="shortDescription" placeholder="300 Character Max" maxlength="300"><%= description %></textarea> 
+					</div>
+				</div>
+			</div>
+			<!-- Image -->
+			<div class="form-group">
+				<label for=""><b>Current Image</b></span></label>
+				<p>
+					<% if (image == '') { %>
+						<img id="productImage" src="/images/noimage.png" alt="">
+					<% } else { %>
+						<img id="productImage" src="/product_images/<%= id %>/<%= image %>" alt="">
+					<% } %>
+				</p>
+				<p><%= image %></p>
+			</div>
+			<div class="form-group">
+				<input class="form-control" type="file" name="image" id="img">
+				<img src="#" id="imgPreview">
+			</div>
+			<!-- Price -->
+			<div class="form-group">
+				<input class="form-control" type="text" name="price" value="<%= price %>" placeholder="Price">
+			</div>
+			<!-- Description -->
+			<div class="form-group">
+				<textarea cols="20" rows="5" class="form-control" name="description" placeholder="Description"><%= description %></textarea> 
+			</div>
+		
+			<input type="hidden" name="pimage" value="<%= image %>">
+			<!-- Submit Button -->
+			<button type="submit" class="btn btn-primary">Update</button>
+		</form>
+
+		<!-- Gallery Images -->
+		<hr>
+		<h3 class="page-header">Gallery</h3>
+
+		<ul class="gallery">
+			<% galleryImages.forEach(function(image) { %>
+				<% if (image != "thumbs") { %>
+					<li>
+						<img class="productImage" src="/product_images/<%= id %>/gallery/thumbs/<%= image %>" alt="" >&nbsp;
+						<a class="confirmDeletion" href="/admin/products/delete-image/<%= image %>?id=<%= id %>">Delete</a>
+					</li>
+				<% } %>
+			<% }); %>
+		</ul>
+
+		<form class="dropzone" id="dropzoneForm" action="/admin/products/product-gallery/<%= id %>" method="post" enctype="multipart/form-data">
+			<div class="fallback">
+				<input type="file" name="file" multiple >
+				<input type="submit" value="Upload" >
+			</div>
+		</form>
+		
 
 	</div> <!-- End Container Fluid -->
 
