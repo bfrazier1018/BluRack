@@ -191,6 +191,12 @@
 						<label for="alcoholRecipient" class="col-12 col-lg-2 col-form-label"><small>Alcohol Recipient (FedEx)</small></label>
 						<div class="col-12 col-lg-3">
 							<select name="alcoholRecipient" class="form-control form-control-sm">
+								<option value="Select"
+									<% if (alcoholRecipient == "Select") { %>
+										selected="selected"
+									<% } %>
+									>Select
+								</option>
 								<option value="CONSUMER"
 									<% if (alcoholRecipient == "CONSUMER") { %>
 										selected="selected"
@@ -270,25 +276,120 @@
 						<label for="freightClass" class="col-12 col-lg-2 col-form-label"><small>Freight Class</small></label>
 						<div class="col-12 col-lg-3">
 							<select name="freightClass" class="form-control form-control-sm">
-								<option value="None">None</option>
-								<option value="CLASS_050">CLASS_050</option>
-								<option value="CLASS_055">CLASS_055</option>
-								<option value="CLASS_060">CLASS_060</option>
-								<option value="CLASS_065">CLASS_065</option>
-								<option value="CLASS_070">CLASS_070</option>
-								<option value="CLASS_077_5">CLASS_077_5</option>
-								<option value="CLASS_085">CLASS_085</option>
-								<option value="CLASS_092_5">CLASS_092_5</option>
-								<option value="CLASS_100">CLASS_100</option>
-								<option value="CLASS_110">CLASS_110</option>
-								<option value="CLASS_125">CLASS_125</option>
-								<option value="CLASS_150">CLASS_150</option>
-								<option value="CLASS_175">CLASS_175</option>
-								<option value="CLASS_200">CLASS_200</option>
-								<option value="CLASS_250">CLASS_250</option>
-								<option value="CLASS_300">CLASS_300</option>
-								<option value="CLASS_400">CLASS_400</option>
-								<option value="CLASS_500">CLASS_500</option>
+								<option value="None"
+									<% if (freightClass == "None") { %>
+										selected="selected"
+									<% } %>
+									>None
+								</option>
+								<option value="CLASS_050"
+									<% if (freightClass == "CLASS_050") { %>
+										selected="selected"
+									<% } %>
+									>CLASS_050
+								</option>
+								<option value="CLASS_055"
+									<% if (freightClass == "CLASS_055") { %>
+										selected="selected"
+									<% } %>
+									>CLASS_055
+								</option>
+								<option value="CLASS_060"
+									<% if (freightClass == "CLASS_060") { %>
+										selected="selected"
+									<% } %>
+									>CLASS_060
+								</option>
+								<option value="CLASS_065"
+									<% if (freightClass == "CLASS_065") { %>
+										selected="selected"
+									<% } %>
+									>CLASS_065
+								</option>
+								<option value="CLASS_070"
+									<% if (freightClass == "CLASS_070") { %>
+										selected="selected"
+									<% } %>
+									>CLASS_070
+								</option>
+								<option value="CLASS_077_5"
+									<% if (freightClass == "CLASS_077_5") { %>
+										selected="selected"
+									<% } %>
+									>CLASS_077_5
+								</option>
+								<option value="CLASS_085"
+									<% if (freightClass == "CLASS_085") { %>
+										selected="selected"
+									<% } %>
+									>CLASS_085
+								</option>
+								<option value="CLASS_092_5"
+									<% if (freightClass == "CLASS_092_5") { %>
+										selected="selected"
+									<% } %>
+									>CLASS_092_5
+								</option>
+								<option value="CLASS_100"
+									<% if (freightClass == "CLASS_100") { %>
+										selected="selected"
+									<% } %>
+									>CLASS_100
+								</option>
+								<option value="CLASS_110"
+									<% if (freightClass == "CLASS_110") { %>
+										selected="selected"
+									<% } %>
+									>CLASS_110
+								</option>
+								<option value="CLASS_125"
+									<% if (freightClass == "CLASS_125") { %>
+										selected="selected"
+									<% } %>
+									>CLASS_125
+								</option>
+								<option value="CLASS_150"
+									<% if (freightClass == "CLASS_150") { %>
+										selected="selected"
+									<% } %>
+									>CLASS_150
+								</option>
+								<option value="CLASS_175"
+									<% if (freightClass == "CLASS_175") { %>
+										selected="selected"
+									<% } %>
+									>CLASS_175
+								</option>
+								<option value="CLASS_200"
+									<% if (freightClass == "CLASS_200") { %>
+										selected="selected"
+									<% } %>
+									>CLASS_200
+								</option>
+								<option value="CLASS_250"
+									<% if (freightClass == "CLASS_250") { %>
+										selected="selected"
+									<% } %>
+									>CLASS_250
+								</option>
+								<option value="CLASS_300"
+									<% if (freightClass == "CLASS_300") { %>
+										selected="selected"
+									<% } %>
+									>CLASS_300
+								</option>
+								<option value="CLASS_400"
+									<% if (freightClass == "CLASS_400") { %>
+										selected="selected"
+									<% } %>
+									>CLASS_400
+								</option>
+								<option value="CLASS_500"
+									<% if (freightClass == "CLASS_500") { %>
+										selected="selected"
+									<% } %>
+									>CLASS_500
+								</option>
 							</select>
 						</div>
 					</div>

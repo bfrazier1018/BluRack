@@ -79,7 +79,7 @@ h6 {
 /* -------------------------- Navbar -------------------------- */
 /* Mobile Version */
 #mainNav {
-    background-color: #212529;
+    background-color: #fff;
 }
 
 /* Main Links */
@@ -88,15 +88,14 @@ h6 {
     font-weight: 400;
     padding: 0.75em 0;
     letter-spacing: 1px;
-    color: #000;
+    color: #373a48;
     font-family: 'Montserrat', 'Helvetica Neue', Helvetica, Arial, sans-serif;
 }
 
 
 /* Hover - Main Links */
 #mainNav .navbar-nav .nav-item .nav-link.active, #mainNav .navbar-nav .nav-item .nav-link:hover {
-    color: #fff;
-    border-bottom: 2px solid #fff;
+    color: #3a9cdf;
 }
 
 /* Cart Nav Font Size */
