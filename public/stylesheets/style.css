@@ -88,7 +88,7 @@ h6 {
     font-weight: 400;
     padding: 0.75em 0;
     letter-spacing: 1px;
-    color: #fff;
+    color: #000;
     font-family: 'Montserrat', 'Helvetica Neue', Helvetica, Arial, sans-serif;
 }
 
@@ -135,13 +135,13 @@ h6 {
 /* Media Queries -- LG Screens */
 @media (min-width: 992px) {
     #mainNav {
-        padding-top: 25px;
-        padding-bottom: 25px;
+        padding-top: 0px;
+        padding-bottom: 0px;
         -webkit-transition: padding-top 0.3s, padding-bottom 0.3s;
         -moz-transition: padding-top 0.3s, padding-bottom 0.3s;
         transition: padding-top 0.3s, padding-bottom 0.3s;
         border: none;
-        background-color: transparent;
+        background-color: #fff;
     }
     #mainNav .navbar-nav .nav-item .nav-link {
         padding: 1.1em 1em !important;
@@ -150,7 +150,7 @@ h6 {
     #mainNav.navbar-shrink {
         padding-top: 0;
         padding-bottom: 0;
-        background-color: #212529;
+        background-color: #fff;
     }
     #navbarLogo {
         width: 205px;

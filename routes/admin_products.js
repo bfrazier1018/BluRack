@@ -396,6 +396,7 @@ router.post('/edit-product/:id', (req, res) => {
     req.checkBody('price', 'Price must have a value!').isDecimal();
     req.checkBody('image', 'You must upload an image!').isImage(imageFile);
 
+    var id = req.params.id;
     var name = req.body.name;
     var slug = name.replace(/\s+/g, '-').toLowerCase();
     var sku = req.body.sku;
@@ -444,9 +445,29 @@ router.post('/edit-product/:id', (req, res) => {
 
                     product.name = name;
                     product.slug = slug;
+                    product.shortDescription = shortDescription;
                     product.description = description;
                     product.price = parseFloat(price).toFixed(2);
                     product.category = category;
+                    product.sku = sku;
+                    product.stockStatus = stockStatus;
+                    product.website = website;
+                    product.facebook = facebook;
+                    product.weight = weight;
+                    product.length = length;
+                    product.width = width;
+                    product.height = height;
+                    product.shippingClass = shippingClass;
+                    product.HSTariffNumber = HSTariffNumber;
+                    product.countryOfManufacture = countryOfManufacture;
+                    product.specialServices = specialServices;
+                    product.alcoholRecipient = alcoholRecipient;
+                    product.dangerousGoodsRegulation = dangerousGoodsRegulation;
+                    product.dangerousGoodsAccessibility = dangerousGoodsAccessibility;
+                    product.customDeclaredValue = customDeclaredValue;
+                    product.freightClass = freightClass;
+                    product.prePackedProduct = prePackedProduct;
+                    product.nonStandardProduct = nonStandardProduct;
                     if (imageFile != "") {
                         product.image = imageFile;
                     }
