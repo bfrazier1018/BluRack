@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <!-- Bootstrap 4 CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/all.css" integrity="sha384-hWVjflwFxL6sNzntih27bfxkr27PmbbK/iSvJ+a4+0owXq79v+lsFkW54bOGbiDQ" crossorigin="anonymous">
+    <!-- CSS  -->
+    <link rel="stylesheet" type="text/css" href="/stylesheets/brands.css">
+    <title><%= title %></title>
+</head>
+<body>
+    <div class="container">
+        <div class="row text-center">
+            <div class="col-12 col-md-4">
+            </div>
+            <div class="col-12 col-md-4">
+                <img id="navbarLogo" src="/product_images/<%= product.id%>/<%= product.image %>" alt="Simple Vodka">
+            </div>
+            <div class="col-12 col-md-4">
+                <h2 class="text-dark">Get It Now</h2>
+                <p><b><%= product.name %></b> is committed to supporting sustainable, local, production systems to provide you with the world's smoothest gluten-free potato vodka</p>
+                <p><%= product.price %></p>
+                <a href="/cart/add/simple-vodka"><button class="btn btn-lg btn-outline-dark">Add to Cart</button></a>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

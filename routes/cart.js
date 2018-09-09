@@ -104,7 +104,7 @@ router.get('/add/:product', (req, res) => {
 
 		// console.log(req.session.cart);
 		req.flash('success', product.name + ' Added to Cart!');
-		res.redirect('back');
+		res.redirect('/cart');
 	});
 });
 

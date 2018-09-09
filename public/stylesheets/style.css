@@ -84,8 +84,8 @@ h6 {
 
 /* Main Links */
 #mainNav .navbar-nav .nav-item .nav-link {
-    font-size: 90%;
-    font-weight: 400;
+    font-size: 95%;
+    font-weight: 500;
     padding: 0.75em 0;
     letter-spacing: 1px;
     color: #373a48;
@@ -97,21 +97,6 @@ h6 {
 #mainNav .navbar-nav .nav-item .nav-link.active, #mainNav .navbar-nav .nav-item .nav-link:hover {
     color: #3a9cdf;
 }
-
-/* Cart Nav Font Size */
-#cartFont {
-    font-size: 22px;
-}
-
-/* Cart & Login Hover */
-#mainNav .navbar-nav .nav-right:hover {
-    border: none !important;
-}
-
-/* Log In Button */
-/*#mainNav #login {
-    margin-left: 5px;
-}*/
 
 /* BluRack Logo -- Mobile */
 #navbarLogo {
@@ -578,7 +563,7 @@ section#contact :-ms-input-placeholder {
 header.checkout-page {
     text-align: center;
     height: 115px;
-    background-color: #212529;
+    background-color: #fff;
 }
 
 #checkout-product-img {

@@ -24,28 +24,29 @@
 <body id="page-top">
 
     <!-- Navigation -->
-    <nav class="navbar navbar-expand-lg navbar-dark fixed-top" id="mainNav">
+    <nav class="navbar navbar-expand-lg navbar-dark fixed-top justify-content-center" id="mainNav">
         <div class="container">
             <a class="navbar-brand js-scroll-trigger" href="/"><img id="navbarLogo" src="/images/BluRack_Logo.png" alt="Logo"></a>
-            <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation"><i class="fa fa-bars"></i> Menu
+            <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="   false" aria-label="Toggle navigation"><i class="fa fa-bars"></i> Menu
             </button>
             <!-- Main Nav Links -->
-            <div class="collapse navbar-collapse" id="navbarResponsive">
-                <ul class="navbar-nav text-uppercase">
+            <div class="collapse navbar-collapse just-content-between align-items-center w-100" id="navbarResponsive">
+                <ul class="navbar-nav mx-auto text-center text-uppercase">
                     <li class="nav-item"><a class="nav-link js-scroll-trigger" href="/#services">SERVICES</a></li>
                     <li class="nav-item"><a class="nav-link js-scroll-trigger" href="/brands">BRANDS</a></li>
+                    <li class="nav-item"><a class="nav-link js-scroll-trigger" href="/#givingBack">GIVING BACK</a></li>
                     <li class="nav-item"><a class="nav-link js-scroll-trigger" href="/contact-us">CONTACT</a></li>
                 </ul>
                 <!-- Right Nav Links -->
-                <ul class="navbar-nav text-uppercase ml-auto">
+                <ul class="navbar-nav flex-row text-uppercase justify-content-center flex-nowwrap">
+                    <li class="nav-item"><a class="nav-link js-scroll-trigger nav-right" id="login" href="/admin/products">SIGN IN</a></li>
                     <% if (typeof cart !== "undefined") { %>
                         <li class="nav-item">
-                            <a class="nav-link js-scroll-trigger nav-right" href="/cart"><i class="fas fa-shopping-cart fa-2x"></i><span id="cartFont"> (
+                            <a class="nav-link js-scroll-trigger nav-right" href="/cart"><i class="fas fa-shopping-cart"></i><span id="cartFont"> (
                                 <%= cart.length %> )</span>
                             </a>
                         </li>
                     <% } %> 
-                    <li class="nav-item"><a class="nav-link js-scroll-trigger nav-right" id="login" href="#">SIGN IN</a></li>
                 </ul>
             </div>
         </div>
